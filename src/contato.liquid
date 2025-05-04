@@ -1,0 +1,99 @@
+---
+layout: default
+title: Contato
+---
+<section class="section">
+  <section class="section main-content">
+    <h1 class="custom-title">Contato</h1>
+    <div class="columns is-multiline mt-6">
+      <div class="column is-one-third has-text-centered">
+        <figure class="image is-inline-block">
+          <img class="hero" src="{{ '/images/slide_francisco.jpeg' | relative_url }}" alt="São Francisco">
+        </figure>
+      </div>
+      <div class="column is-one-third has-text-centered">
+        <figure class="image is-inline-block">
+          <img class="hero" src="{{ '/images/slide_pio.jpeg' | relative_url }}" alt="São Pio">
+        </figure>
+      </div>
+      <div class="column is-one-third has-text-centered">
+        <figure class="image is-inline-block">
+          <img class="hero" src="{{ '/images/slide_luis.jpeg' | relative_url }}" alt="São Luís">
+        </figure>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="container">
+      <h1 class="custom-title">Pedido de Oração ou Dúvidas</h1>
+      <form action="https://formspree.io/f/mqaqprqj" method="POST">
+        <div class="field">
+          <label class="label">Nome completo</label>
+          <div class="control">
+            <input
+              class="input"
+              type="text"
+              name="nome"
+              placeholder="Seu nome completo"
+              required
+              pattern="[A-Za-záéíóúÁÉÍÓÚãõáàâéêíóõô\s]+"
+              title="Por favor, insira um nome válido"
+              minlength="3"
+            >
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Cidade e Estado</label>
+          <div class="control">
+            <input
+              class="input"
+              type="text"
+              name="cidade"
+              placeholder="Sua cidade e estado"
+              required
+              pattern="[A-Za-záéíóúÁÉÍÓÚãõáàâéêíóõô\s]+"
+              title="Por favor, insira uma cidade válida"
+              minlength="2"
+            >
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Paróquia e Comunidade</label>
+          <div class="control">
+            <input
+              class="input"
+              type="text"
+              name="paroquia"
+              placeholder="Sua diocese, paróquia e comunidade"
+              required
+              pattern="[A-Za-záéíóúÁÉÍÓÚãõáàâéêíóõô\s]+"
+              title="Por favor, insira o nome da paróquia"
+              minlength="2"
+            >
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Pedido de oração ou dúvida</label>
+          <div class="control">
+            <textarea
+              class="textarea"
+              name="mensagem"
+              placeholder="Escreva aqui seu pedido ou dúvida..."
+              required
+            ></textarea>
+          </div>
+        </div>
+
+        <div class="field is-grouped">
+          <div class="control">
+            <button class="button is-warning is-light custom-button" type="submit">Enviar</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+</section>

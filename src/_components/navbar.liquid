@@ -1,0 +1,30 @@
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item navbar-title" href="/">
+      <img src="{{ '/images/logo_preto.png' | relative_url }}" class="navbar-logo">
+      <span class="brand-text">ESCOLA COM MARIA</span>
+    </a>
+
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMain">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarMain" class="navbar-menu">
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <a class="button is-warning is-light custom-button" href="{{ '/carisma' | relative_url }}"> Carisma </a>
+      </div>
+      <div class="navbar-item">
+        <a class="button is-warning is-light custom-button" href="{{ '/contato' | relative_url }}"> Contato </a>
+      </div>
+      <div class="navbar-item">
+        <a class="button is-warning is-light custom-button" href="/" target="_blank">
+          <span class="icon"><i class="fab fa-instagram"></i></span>
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
