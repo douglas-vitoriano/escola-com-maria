@@ -1,43 +1,23 @@
-const build = require("./config/esbuild.defaults.js")
+const build = require("./config/esbuild.defaults.js");
+const esbuild = require("esbuild");
+const postcssPlugin = require("esbuild-plugin-postcss");
 
-// You can customize this as you wish, perhaps to add new esbuild plugins.
-//
-// ```
-// const path = require("path")
-// const esbuildCopy = require('esbuild-plugin-copy').default
-// const esbuildOptions = {
-//   plugins: [
-//     esbuildCopy({
-//       assets: {
-//         from: [path.resolve(__dirname, 'node_modules/somepackage/files/*')],
-//         to: [path.resolve(__dirname, 'output/_bridgetown/somepackage/files')],
-//       },
-//       verbose: false
-//     }),
-//   ]
-// }
-// ```
-//
-// You can also support custom base_path deployments via changing `publicPath`.
-//
-// ```
-// const esbuildOptions = {
-//   publicPath: "/my_subfolder/_bridgetown/static",
-//   ...
-// }
-// ```
-
-/**
- * @typedef { import("esbuild").BuildOptions } BuildOptions
- * @type {BuildOptions}
- */
-const esbuildOptions = {
-  plugins: [
-    // add new plugins here...
-  ],
-  globOptions: {
-    excludeFilter: /\.(dsd|lit)\.css$/
-  }
-}
-
-build(esbuildOptions)
+module.exports = (overrides = {}) => {
+  return esbuild.build({
+    entryPoints: [
+      "frontend/javascript/index.js",
+      "frontend/styles/index.css"
+    ],
+    bundle: true,
+    outdir: "output/_bridgetown/static",
+    sourcemap: process.env.NODE_ENV !== "production",
+    minify: process.env.NODE_ENV === "production",
+    loader: {
+      ".png": "file",
+      ".jpg": "file",
+      ".jpeg": "file",
+      ".svg": "file",
+    },
+    ...overrides
+  });
+};

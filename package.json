@@ -4,20 +4,23 @@
   "private": true,
   "packageManager": "yarn@1.22.19",
   "scripts": {
+    "build": "yarn esbuild && bundle exec bridgetown build",
     "esbuild": "node esbuild.config.js --minify",
     "esbuild-dev": "node esbuild.config.js --watch"
   },
   "devDependencies": {
-    "esbuild": "^0.19.2",
+    "esbuild": "^0.25.3",
     "glob": "^10.3.3",
-    "postcss": "^8.4.29",
+    "postcss": "^8.5.3",
     "postcss-flexbugs-fixes": "^5.0.2",
     "postcss-import": "^15.1.0",
     "postcss-load-config": "^4.0.1",
-    "postcss-preset-env": "^9.1.2",
+    "postcss-preset-env": "^10.1.6",
     "read-cache": "^1.0.0"
   },
   "dependencies": {
-    "bulma": "^1.0.4"
+    "autoprefixer": "^10.4.21",
+    "bulma": "^1.0.4",
+    "esbuild-plugin-postcss": "^0.3.0"
   }
 }
