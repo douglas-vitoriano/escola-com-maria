@@ -5,10 +5,6 @@ const build = require("./config/esbuild.defaults.js")
  * @type {BuildOptions}
  */
 const esbuildOptions = {
-  entryPoints: [
-    "./frontend/javascript/index.js",
-    "./frontend/styles/index.css"
-  ],
   outbase: "./frontend",
   entryNames: "[name]",
 }
