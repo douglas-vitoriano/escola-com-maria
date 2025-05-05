@@ -10,6 +10,7 @@
     {% render 'head', metadata: site.metadata, title: data.title %}
   </head>
   <body class="{{ data.layout }} {{ data.page_class }}">
+    <link rel="stylesheet" href="{{ '/_bridgetown/static/index.css' | relative_url }}">
     {% render 'navbar', metadata: site.metadata, resource: resource %}
 
     <main class="section">
