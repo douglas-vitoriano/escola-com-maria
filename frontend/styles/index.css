@@ -1,3 +1,5 @@
+@import "~bulma/bulma";
+
 :root {
   --gold: rgb(196, 179, 95);
   --dark: rgb(59, 59, 56);

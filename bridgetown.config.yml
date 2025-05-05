@@ -1,10 +1,7 @@
-url: "" # the base hostname & protocol for your site, e.g. https://example.com
+url: "https://escola-com-maria.pages.dev/"
 
 permalink: pretty
 template_engine: liquid
-plugins:
-  - bridgetown-esbuild
-
 environment:
   development:
     FORMSPREE_URL: "{{ site.environment.FORMSPREE_URL }}"

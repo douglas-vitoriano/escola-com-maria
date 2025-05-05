@@ -28,3 +28,76 @@
     </div>
   </div>
 </nav>
+
+<style>
+  .navbar {
+    background-color: black;
+    height: auto;
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+  }
+
+  .navbar-brand .navbar-item {
+    padding: 0;
+  }
+
+  .navbar-title {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    text-decoration: none;
+  }
+
+  .navbar-logo {
+    height: 100px !important;
+    width: auto !important;
+    max-height: none !important;
+    object-fit: contain;
+    display: inline-block;
+  }
+
+  .brand-text {
+    color: rgb(143, 133, 83);
+    font-size: 40px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+  }
+
+  .brand-text:hover {
+    color: rgb(196, 179, 95);
+    transform: scale(1.05);
+    text-shadow: 1px 1px 3px rgba(255, 215, 0, 0.3);
+  }
+
+  .navbar-menu {
+    align-items: center;
+  }
+
+  .navbar-item {
+    color: rgb(196, 179, 95);
+  }
+
+  .navbar-item:hover {
+    color: rgb(59, 59, 56);
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const $navbarBurgers = Array.from(document.querySelectorAll('.navbar-burger'));
+
+    $navbarBurgers.forEach((el) => {
+      el.addEventListener('click', () => {
+        const target = el.dataset.target;
+        const $target = document.getElementById(target);
+
+        el.classList.toggle('is-active');
+        $target.classList.toggle('is-active');
+      });
+    });
+  });
+</script>

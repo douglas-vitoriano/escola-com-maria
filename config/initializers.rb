@@ -1,9 +1,9 @@
 Bridgetown.configure do |config|
   # You can configure aspects of your Bridgetown site here instead of using
   # `bridgetown.config.yml`. For example:
-  #
-  # permalink "simple"
-  # timezone "America/Los_Angeles"
+  init :dotenv
+  permalink "pretty"
+  timezone "America/Los_Angeles"
   #
   # You can also modify options on the configuration object directly, like so:
   #
