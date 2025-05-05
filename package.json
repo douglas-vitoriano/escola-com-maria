@@ -1,7 +1,8 @@
 {
   "name": "escola-com-maria",
-  "version": "1.0.0",
+  "version": "0.1",
   "private": true,
+  "packageManager": "yarn@1.22.19",
   "scripts": {
     "esbuild": "node esbuild.config.js --minify",
     "esbuild-dev": "node esbuild.config.js --watch"
