@@ -21,7 +21,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 # and then run `bundle update bridgetown`
 gem "bridgetown", "~> 1.3.4"
 
-gem 'bulma-rails'
+# gem 'bulma-rails'
 
 # Uncomment to add file-based dynamic routing to your project:
 # gem "bridgetown-routes", "~> 1.3.4"
