@@ -24,9 +24,9 @@ template_engine: liquid
 
 environment:
   development:
-    FORMSPREE_URL: "https://formspree.io/f/mqaqprqj"
+    FORMSPREE_URL: "{{ site.environment.FORMSPREE_URL }}"
   production:
-    FORMSPREE_URL: "https://formspree.io/f/mqaqprqj"
+    FORMSPREE_URL: "{{ site.environment.FORMSPREE_URL }}"
 
 
 # Other options you might want to investigate:
