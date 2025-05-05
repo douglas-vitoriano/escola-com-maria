@@ -1,9 +1,13 @@
+.env
+*.log
+
 # Bridgetown
 output
 .bridgetown-cache
 .bridgetown-metadata
 .bridgetown-webpack
 .routes.json
+/bridgetown.config.yml
 
 # Dependency folders
 node_modules
@@ -34,3 +38,8 @@ yarn-debug.log*
 .pnp.js
 # Yarn Integrity file
 .yarn-integrity
+
+# Node.js
+node_modules/
+yarn.lock
+package-lock.json
