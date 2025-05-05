@@ -4,8 +4,9 @@ title: Contato
 ---
 <section class="section">
   <section class="section main-content">
-    <h1 class="custom-title">Contato</h1>
-    <div class="columns is-multiline mt-6">
+    <!-- Mostrar no Desktop -->
+    <h1 class="custom-hero is-hidden-touch">Contato</h1>
+    <div class="columns is-multiline mt-6 is-hidden-touch">
       <div class="column is-one-third has-text-centered">
         <figure class="image is-inline-block">
           <img class="hero" src="{{ '/images/slide_francisco.jpeg' | relative_url }}" alt="São Francisco">
@@ -21,6 +22,14 @@ title: Contato
           <img class="hero" src="{{ '/images/slide_luis.jpeg' | relative_url }}" alt="São Luís">
         </figure>
       </div>
+    </div>
+
+    <!-- Mostrar apenas no Celular/Tablet -->
+    <h1 class="custom-hero is-hidden-desktop" style="margin-top: -75px;">Contato</h1>
+    <div class="is-hidden-desktop has-text-centered">
+      <figure class="image is-inline-block">
+        <img class="hero" src="{{ '/images/slide_cruz.jpeg' | relative_url }}" alt="Cruz">
+      </figure>
     </div>
 
     <br>

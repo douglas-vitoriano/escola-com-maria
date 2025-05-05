@@ -3,8 +3,10 @@ layout: default
 title: Home
 ---
 <section class="section main-content">
-  <h1 class="custom-title">Escola Com Maria – Ideal e Propósito</h1>
-  <div class="columns is-multiline mt-6">
+  <h1 class="custom-title is-hidden-touch">Escola Com Maria – Ideal e Propósito</h1>
+
+  <!-- Imagens para Desktop -->
+  <div class="columns is-multiline mt-6 is-hidden-touch">
     <div class="column is-one-third has-text-centered">
       <figure class="image is-inline-block">
         <img class="hero" src="{{ '/images/slide_cruz.jpeg' | relative_url }}" alt="Cruz">
@@ -12,19 +14,24 @@ title: Home
     </div>
     <div class="column is-one-third has-text-centered">
       <figure class="image is-inline-block">
-        <img class="hero" src="{{ '/images/slide_pieta.jpeg' | relative_url }}" alt="Pieta">
+        <img class="hero" src="{{ '/images/slide_pieta.jpeg' | relative_url }}" alt="Pietá">
       </figure>
     </div>
     <div class="column is-one-third has-text-centered">
       <figure class="image is-inline-block">
-        <img
-          class="hero"
-          src="{{ '/images/slide_missa.jpeg' | relative_url }}"
-          alt="Missa"
-        >
+        <img class="hero" src="{{ '/images/slide_missa.jpeg' | relative_url }}" alt="Missa">
       </figure>
     </div>
   </div>
+
+  <!-- Imagem única da Pietá para Mobile/Tablet -->
+  <h1 class="custom-hero is-hidden-desktop">Ideal e Propósito</h1>
+  <div class="is-hidden-desktop has-text-centered">
+    <figure class="image is-inline-block">
+      <img class="hero" src="{{ '/images/slide_pieta.jpeg' | relative_url }}" alt="Pietá">
+    </figure>
+  </div>
+
   <br>
 
   <div class="container">

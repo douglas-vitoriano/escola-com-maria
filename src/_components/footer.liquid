@@ -2,7 +2,10 @@
   <div class="content has-text-centered">
     <p>&copy; {{ 'now' | date: '%Y' }} Escola. Todos os direitos reservados.</p>
     <p class="title">Fale Conosco</p>
-    <p>Email: escolacommaria@gmail.com</p>
+    <p>
+      Email:
+      <a href="mailto:escolacommaria@gmail.com" class="email-link"> escolacommaria@gmail.com </a>
+    </p>
   </div>
 </footer>
 
@@ -16,5 +19,15 @@
   .footer p {
     color: rgb(143, 133, 83);
     font-size: 1rem;
+  }
+
+  .footer a.email-link {
+    color: rgb(196, 179, 95);
+    text-decoration: underline;
+  }
+
+  .footer a.email-link:hover {
+    color: rgb(255, 215, 0);
+    text-decoration: none;
   }
 </style>

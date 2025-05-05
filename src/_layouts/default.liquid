@@ -4,6 +4,7 @@
     {% render 'head', metadata: site.metadata, title: data.title %}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
   </head>
+  <a href="#" class="back-to-top" title="Voltar ao Topo"> &#8679; </a>
   <body class="{{ data.layout }} {{ data.page_class }}">
     {% render 'navbar', metadata: site.metadata, resource: resource %}
 
@@ -127,6 +128,26 @@
     margin-bottom: 20px;
   }
 
+  .custom-hero {
+    font-size: 60px;
+    font-family: 'Georgia', serif;
+    color: rgb(196, 179, 95);
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .custom-hero {
+      font-size: 50px;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .custom-title {
+      font-size: 24px;
+    }
+  }
+
   .custom-text {
     font-size: 20px;
     font-family: 'Georgia', serif;
@@ -151,10 +172,13 @@
     object-fit: cover;
     border-radius: 10px;
     margin-bottom: 10px;
+    margin-top: 5px;
   }
 
   .hero {
-    object-fit: cover;
+    width: 400px !important;
+    height: 400px !important;
+    object-fit: fill;
     border-radius: 10px;
     margin-bottom: 10px;
     margin-top: 5px;
@@ -183,4 +207,45 @@
     padding: 0 !important;
     margin: 0 !important;
   }
+
+  .back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: rgb(143, 133, 83);
+    color: white;
+    font-size: 24px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    z-index: 999;
+  }
+
+  .back-to-top:hover {
+    background-color: rgb(143, 133, 83);
+    color: black;
+  }
 </style>
+
+<script>
+  window.onscroll = function () {
+    const backToTop = document.querySelector('.back-to-top');
+    if (document.documentElement.scrollTop > 100 || document.body.scrollTop > 100) {
+      backToTop.style.display = 'flex';
+    } else {
+      backToTop.style.display = 'none';
+    }
+  };
+
+  document.querySelector('.back-to-top').addEventListener('click', function (e) {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
