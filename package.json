@@ -7,7 +7,7 @@
     "esbuild-dev": "node esbuild.config.js --watch"
   },
   "devDependencies": {
-    "esbuild": "^0.19.2",
+    "esbuild": "^0.25.3",
     "glob": "^10.3.3",
     "postcss": "^8.4.29",
     "postcss-flexbugs-fixes": "^5.0.2",
@@ -20,5 +20,6 @@
     "autoprefixer": "^10.4.21",
     "bulma": "^1.0.4",
     "esbuild-plugin-postcss": "^0.3.0"
-  }
+  },
+  "packageManager": "yarn@3.6.3"
 }
