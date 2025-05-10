@@ -16,11 +16,11 @@ title: Bíblia
   </section>
 </div>
 
-<div class="modal" id="modal-biblia">
+<div class="modal" id="modal-biblia" role="dialog" aria-modal="true" aria-labelledby="modal-title">
   <div class="modal-background"></div>
   <div class="modal-card" style="width: 95vw; max-width: 1000px;">
     <header class="modal-card-head">
-      <p class="modal-card-title">Selecione um Livro</p>
+      <p class="modal-card-title" id="modal-title">Selecione um Livro</p>
       <button class="delete" aria-label="close" id="btn-close-modal"></button>
     </header>
     <section class="modal-card-body" id="modal-body" style="max-height: 70vh; overflow-y: auto;"></section>
@@ -99,6 +99,29 @@ title: Bíblia
     min-height: 74vh;
   }
 
+  .modal-body-flex {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .livros-wrapper {
+    flex: 1 1 40%;
+    max-width: 300px;
+    overflow-y: auto;
+    max-height: 60vh;
+    border-right: 1px solid #ddd;
+    padding-right: 1rem;
+  }
+
+  #capitulos-list {
+    flex: 1 1 60%;
+    max-height: 60vh;
+    overflow-y: auto;
+    padding-left: 1rem;
+  }
+
   @media screen and (max-width: 768px) {
     .modal-card {
       width: 95vw !important;
@@ -164,7 +187,11 @@ title: Bíblia
         livroWrapper.appendChild(tagLivro);
       });
   
-      modalBody.appendChild(livroWrapper);
+      const flexWrapper = document.createElement("div");
+      flexWrapper.className = "modal-body-flex";
+
+      flexWrapper.appendChild(livroWrapper);
+      modalBody.appendChild(flexWrapper);
     };
   
     const updateLivroDisplay = (container, livro) => {
@@ -193,7 +220,10 @@ title: Bíblia
         capContainer.appendChild(tagCap);
       });
   
-      modalBody.appendChild(capContainer);
+      const flexWrapper = modalBody.querySelector(".modal-body-flex");
+      if (flexWrapper) {
+        flexWrapper.appendChild(capContainer);
+      }
   
       setTimeout(() => {
         capContainer.scrollIntoView({ behavior: "smooth", block: "start" });
