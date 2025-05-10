@@ -26,28 +26,127 @@ title: Carisma
     </ul>
 
     <div class="columns is-multiline mt-6">
-      <div class="column is-one-third has-text-centered">
-        <figure class="image is-inline-block">
-          <img class="saint" src="{{ '/images/sao_francisco.png' | relative_url }}" alt="São Francisco de Assis">
-        </figure>
-        <p class="custom-text"><b>São Francisco de Assis</b></p>
-      </div>
-      <div class="column is-one-third has-text-centered">
-        <figure class="image is-inline-block">
-          <img class="saint" src="{{ '/images/sao_pio.jpeg' | relative_url }}" alt="São Pio de Pietrelcina">
-        </figure>
-        <p class="custom-text"><b>São Pio de Pietrelcina</b></p>
-      </div>
-      <div class="column is-one-third has-text-centered">
-        <figure class="image is-inline-block">
-          <img
-            class="saint"
-            src="{{ '/images/sao_luis.png' | relative_url }}"
-            alt="São Luís Maria Grignion de Montfort"
-          >
-        </figure>
-        <p class="custom-text"><b>São Luís Maria Grignion de Montfort</b></p>
-      </div>
+      {% assign santos = site.data.santos %}
+      {% for santo in santos %}
+        <div class="column is-one-third has-text-centered">
+          <figure class="image is-inline-block is-clickable" onclick="mostrarSanto('{{ forloop.index0 }}')">
+            <img class="saint" src="{{ santo.imagem | relative_url }}" alt="{{ santo.nome }}">
+          </figure>
+          <p class="custom-text is-clickable" onclick="mostrarSanto('{{ forloop.index0 }}')">
+            <strong>{{ santo.nome }}</strong>
+          </p>
+        </div>
+      {% endfor %}
     </div>
   </section>
 </div>
+
+<div class="modal" id="modal-santo">
+  <div class="modal-background" onclick="fecharModal()"></div>
+  <div class="modal-card" style="width: 70vw; max-height: 80vh;">
+    <header class="modal-card-head">
+      <p class="modal-card-title" id="modal-titulo"></p>
+      <button class="delete" aria-label="close" onclick="fecharModal()"></button>
+    </header>
+    <section class="modal-card-body" id="modal-conteudo" style="overflow-y: auto;"></section>
+    <footer class="modal-card-foot is-flex is-justify-content-center is-hidden-desktop">
+      <button class="button botao-fechar-mobile" onclick="fecharModal()">Fechar</button>
+    </footer>
+  </div>
+</div>
+
+<style>
+  .modal-card-body p {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    text-align: justify;
+  }
+
+  .image.is-clickable {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+
+  .image.is-clickable:hover {
+    transform: scale(1.05);
+  }
+
+  .is-clickable {
+    cursor: pointer;
+  }
+
+  .modal-columns {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .modal-image {
+    flex: 0 0 300px;
+    text-align: center;
+  }
+
+  .modal-dados {
+    flex: 1;
+    font-size: 1.3rem;
+    line-height: 1.6;
+  }
+
+  .botao-fechar-mobile {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+  }
+
+  .botao-fechar-mobile:hover {
+    background-color: #c0392b;
+    color: white;
+  }
+
+  @media (max-width: 1024px) {
+    .modal-columns {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .modal-card {
+      width: 90vw !important;
+      max-height: 90vh !important;
+    }
+
+    .modal-dados {
+      text-align: center;
+      font-size: 1.1rem;
+    }
+  }
+</style>
+
+<script>
+  const santos = {{ site.data.santos | jsonify }};
+
+  function mostrarSanto(index) {
+    const santo = santos[index];
+    document.getElementById("modal-titulo").textContent = santo.nome;
+
+    document.getElementById("modal-conteudo").innerHTML = `
+      <div class="modal-columns">
+        <div class="modal-image">
+          <img src="${santo.imagem}" alt="${santo.nome}" style="width: 100%; border-radius: 12px;">
+        </div>
+        <div class="modal-dados">
+          ${santo.dados ? santo.dados : ''}
+        </div>
+      </div>
+      <hr>
+      <p class="mt-4">${santo.resumo}</p>
+    `;
+
+    document.getElementById("modal-santo").classList.add("is-active");
+  }
+
+  function fecharModal() {
+    document.getElementById("modal-santo").classList.remove("is-active");
+  }
+</script>

@@ -1,0 +1,71 @@
+- id: sao-francisco
+  nome: São Francisco de Assis
+  imagem: /images/sao_francisco.png
+  dados: |
+    <strong>Nascimento:</strong> 26 de setembro de 1182<br>
+    <strong>Morte:</strong> 3 de outubro de 1226<br>
+    <strong>Festa litúrgica:</strong> 4 de outubro<br>
+    <strong>Beatificação:</strong> Não houve processo formal moderno; foi considerado santo por aclamação popular.<br>
+    <strong>Canonização:</strong> 16 de julho de 1228, pelo Papa Gregório IX<br><br>
+  resumo: |
+    São Francisco nasceu em uma família rica e viveu uma juventude despreocupada. Após um processo de conversão profunda, abandonou tudo para seguir o Cristo pobre e crucificado.
+
+    Um dos momentos marcantes de sua vida foi quando, em oração, ouviu Jesus dizer: “Francisco, reconstrói a minha Igreja”. Levou isso ao pé da letra e começou a restaurar igrejas abandonadas, até entender que o chamado era espiritual.
+
+    Em um famoso episódio, o Papa Inocêncio III teve um sonho em que via a Basílica de São João de Latrão desabando e um jovem pobre a sustentando — esse jovem era Francisco, reconhecido como renovador da Igreja.
+
+    Fundador da Ordem dos Frades Menores (Franciscanos), também inspirou as Ordens Segunda (Clarissas) e Terceira (leigos franciscanos). Recebeu os estigmas em 1224 no Monte Alverne.
+
+    Foi proclamado padroeiro da ecologia por São João Paulo II em 1979, por seu profundo amor à criação. Seu Cântico das Criaturas expressa esse louvor à natureza como obra divina.
+
+- id: sao-pio
+  nome: São Pio de Pietrelcina
+  imagem: /images/sao_pio.jpeg
+  dados: |
+    <strong>Nascimento:</strong> 25 de maio de 1887<br>
+    <strong>Morte:</strong> 23 de setembro de 1968<br>
+    <strong>Festa litúrgica:</strong> 23 de setembro<br>
+    <strong>Beatificação:</strong> 2 de maio de 1999, por São João Paulo II<br>
+    <strong>Canonização:</strong> 16 de junho de 2002, por São João Paulo II<br>
+    <strong>Milagres reconhecidos:</strong> Cura de Consiglia de Martino (1995) e Matteo Colella (2000)<br><br>
+  resumo: |
+    Padre Pio ingressou na Ordem dos Capuchinhos aos 15 anos e foi ordenado sacerdote em 1910.
+
+    A partir de 1918, passou a carregar os estigmas de Cristo, que permaneceram visíveis por 50 anos.
+
+    É conhecido por seus dons místicos como bilocação (estar em dois lugares ao mesmo tempo), cura espiritual e física, leitura das almas e discernimento sobrenatural.
+
+    Um dos fatos mais tocantes foi sua relação espiritual com São João Paulo II: em 1947, o então jovem padre Karol Wojtyła visitou Pio e pediu orações por uma amiga gravemente doente — que foi milagrosamente curada.
+
+    Décadas depois, Wojtyła canonizou Pio.
+
+    Padre Pio fundou o hospital “Casa Alívio do Sofrimento”, ainda hoje referência na Itália.
+
+    Sua vida foi marcada por intensa oração, mortificação e fidelidade à confissão e à Eucaristia.
+
+    É considerado um dos maiores santos do século XX.
+
+- id: sao-luis
+  nome: São Luís Maria Grignion de Montfort
+  imagem: /images/sao_luis.png
+  dados: |
+    <strong>Nascimento:</strong> 31 de janeiro de 1673<br>
+    <strong>Morte:</strong> 28 de abril de 1716<br>
+    <strong>Festa litúrgica:</strong> 28 de abril<br>
+    <strong>Beatificação:</strong> 22 de janeiro de 1888, por Leão XIII<br>
+    <strong>Canonização:</strong> 20 de julho de 1947, por Pio XII<br>
+    <strong>Obra principal:</strong> "Tratado da Verdadeira Devoção à Santíssima Virgem" (escrito em 1712, publicado somente em 1843)<br><br>
+  resumo: |
+    São Luís foi um missionário apaixonado e incansável, com um carisma todo voltado para a evangelização e a devoção a Nossa Senhora.
+
+    Ajudava os pobres, pregava missões populares e enfrentava grande oposição do jansenismo de sua época.
+
+    Seu Tratado da Verdadeira Devoção ensina a entrega total a Jesus por Maria, por meio de uma consagração que transforma toda a vida cristã.
+
+    A obra ficou escondida por mais de um século e foi redescoberta em 1842.
+
+    São João Paulo II dizia que sua espiritualidade foi profundamente influenciada pelo Tratado, adotando como lema papal “Totus Tuus” (“Todo teu, Maria”).
+
+    São Luís fundou duas congregações: os Missionários Montfortinos e as Filhas da Sabedoria.
+
+    Sua pregação simples, profunda e mariana continua viva nas almas que se consagram segundo seu método.

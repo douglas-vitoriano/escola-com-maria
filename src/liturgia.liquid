@@ -1,0 +1,303 @@
+---
+layout: default
+title: Liturgia Diária
+---
+<section class="section">
+  <div class="container content">
+    <h1 class="title is-3">{{ page.title }}</h1>
+
+    {% assign cor_liturgica = site.data.liturgia_hoje.cor | downcase %}
+    {% case cor_liturgica %}
+      {% when 'branco' %}
+        {% assign cor_tag = 'is-light' %}
+      {% when 'vermelho' %}
+        {% assign cor_tag = 'is-danger' %}
+      {% when 'verde' %}
+        {% assign cor_tag = 'is-success' %}
+      {% when 'roxo' %}
+        {% assign cor_tag = 'is-purple' %}
+      {% else %}
+        {% assign cor_tag = 'is-dark' %}
+    {% endcase %}
+
+    <div class="field is-grouped is-grouped-multiline is-flex-wrap-wrap mb-5">
+      <div class="control">
+        <div class="tags has-addons">
+          <span class="tag is-dark">Data</span>
+          <span class="tag is-info">{{ site.data.liturgia_hoje.data }}</span>
+        </div>
+      </div>
+      <div class="control">
+        <div class="tags has-addons">
+          <span class="tag is-dark">Tipo</span>
+          <span class="tag is-primary">{{ site.data.liturgia_hoje.liturgia }}</span>
+        </div>
+      </div>
+      <div class="control">
+        <div class="tags has-addons">
+          <span class="tag is-dark">Cor</span>
+          <span class="tag {{ cor_tag }}">{{ site.data.liturgia_hoje.cor }}</span>
+        </div>
+      </div>
+    </div>
+
+    {% assign oracoes = site.data.liturgia_hoje.oracoes %}
+    {% assign leituras = site.data.liturgia_hoje.leituras %}
+    {% assign antifonas = site.data.liturgia_hoje.antifonas %}
+
+    {% if antifonas.entrada %}
+      <h2 class="title is-5">Antífona de Entrada</h2>
+      <p>{{ antifonas.entrada }}</p>
+    {% endif %}
+
+    {% if oracoes.coleta %}
+      <h2 class="title is-5">Oração do Dia / Coleta</h2>
+      <p>{{ oracoes.coleta | newline_to_br }}</p>
+    {% endif %}
+
+    <hr>
+
+    <h2 class="title is-5">Leituras</h2>
+    <div class="tags is-multiline mb-4">
+      {% for secao in leituras %}
+        {% assign nome_secao = secao[0] %}
+        {% assign leituras_lista = secao[1] %}
+        {% if leituras_lista.size > 0 %}
+          {% assign nome_formatado = '' %}
+          {% assign classe_tag = 'is-info is-light' %}
+          {% assign classe_box = 'box-info' %}
+          {% case nome_secao %}
+            {% when 'primeiraLeitura' %}
+              {% assign nome_formatado = 'Primeira Leitura' %}
+            {% when 'segundaLeitura' %}
+              {% assign nome_formatado = 'Segunda Leitura' %}
+            {% when 'salmo' %}
+              {% assign nome_formatado = 'Salmo' %}
+              {% assign classe_tag = 'is-link is-light' %}
+              {% assign classe_box = 'box-link' %}
+            {% when 'evangelho' %}
+              {% assign nome_formatado = 'Evangelho' %}
+              {% assign classe_tag = 'is-success is-light' %}
+              {% assign classe_box = 'box-success' %}
+            {% else %}
+              {% assign nome_formatado = nome_secao %}
+          {% endcase %}
+          <span
+            class="tag {{ classe_tag }} is-clickable is-rounded is-medium"
+            onclick="toggleLeitura('{{ nome_secao }}', event)"
+            data-id="{{ nome_secao }}"
+          >
+            {{ nome_formatado }}
+            <span class="leitura-icon is-hidden">
+              <i class="far fa-eye"></i>
+            </span>
+          </span>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    {% for secao in leituras %}
+      {% assign nome_secao = secao[0] %}
+      {% assign leituras_lista = secao[1] %}
+      {% if leituras_lista.size > 0 %}
+        {% assign classe_box = 'box-info' %}
+        {% case nome_secao %}
+          {% when 'salmo' %}
+            {% assign classe_box = 'box-link' %}
+          {% when 'evangelho' %}
+            {% assign classe_box = 'box-success' %}
+        {% endcase %}
+        <div
+          id="leitura-{{ nome_secao }}"
+          class="box is-hidden leitura-box leitura-formatada {{ classe_box }}"
+        >
+          {% for leitura in leituras_lista %}
+            {% if leitura.tipo %}
+              <h3 class="title is-5">{{ leitura.tipo }}</h3>
+            {% endif %}
+            {% if leitura.titulo %}
+              <p>
+                <strong>{{ leitura.titulo }}</strong> – {{ leitura.referencia }}
+              </p>
+            {% elsif leitura.referencia %}
+              <p>
+                <strong>{{ leitura.referencia }}</strong>
+              </p>
+            {% endif %}
+            {% if leitura.refrao %}
+              <p class="has-text-weight-bold has-text-info">Ref: {{ leitura.refrao }}</p>
+            {% endif %}
+            <p>{{ leitura.texto | newline_to_br }}</p>
+            <br>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endfor %}
+
+    <hr>
+
+    {% if oracoes.oferendas %}
+      <h2 class="title is-5">Oração sobre as Oferendas</h2>
+      <p>{{ oracoes.oferendas | newline_to_br }}</p>
+    {% endif %}
+
+    <hr>
+
+    {% if antifonas.comunhao %}
+      <h2 class="title is-5">Antífona de Comunhão</h2>
+      <p>{{ antifonas.comunhao }}</p>
+    {% endif %}
+
+    <hr>
+
+    {% if oracoes.comunhao %}
+      <h2 class="title is-5">Oração após a Comunhão</h2>
+      <p>{{ oracoes.comunhao | newline_to_br }}</p>
+    {% endif %}
+
+    {% if oracoes.extras and oracoes.extras.size > 0 %}
+      <hr>
+      <h2 class="title is-4">Partes Litúrgicas Especiais</h2>
+      {% for extra in oracoes.extras %}
+        <h3 class="title is-5">{{ extra.titulo }}</h3>
+        <p>{{ extra.texto | newline_to_br }}</p>
+        <br>
+      {% endfor %}
+    {% endif %}
+  </div>
+</section>
+
+<script>
+  function toggleLeitura(id, event) {
+    document.querySelectorAll('.leitura-box').forEach((box) => {
+      box.classList.add('is-hidden');
+    });
+
+    document.querySelectorAll('.tag.is-clickable').forEach((tag) => {
+      tag.classList.remove('is-active');
+      const icon = tag.querySelector('.leitura-icon');
+      if (icon) icon.classList.add('is-hidden');
+    });
+
+    const leituraEl = document.getElementById('leitura-' + id);
+    if (leituraEl) leituraEl.classList.remove('is-hidden');
+
+    const clickedTag = event.currentTarget;
+    if (clickedTag) {
+      clickedTag.classList.add('is-active');
+      const icon = clickedTag.querySelector('.leitura-icon');
+      if (icon) icon.classList.remove('is-hidden');
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const leituraBoxes = document.querySelectorAll('.leitura-box');
+
+    leituraBoxes.forEach((box) => {
+      const paragraphs = box.querySelectorAll('p');
+      paragraphs.forEach((p) => {
+        const texto = p.textContent || '';
+        const isReferencia = /[A-Za-z]+\s?\d{1,3},\s?\d{1,3}([-–]\d{1,3})?/.test(texto);
+        const isTitulo = p.querySelector('strong') !== null;
+
+        if (!isReferencia && !isTitulo) {
+          p.innerHTML = p.innerHTML.replace(/(^|\s)(\d{1,3})(?=[^\d])/g, (match, space, number) => {
+            return `${space}<sup><strong>${number}</strong></sup>`;
+          });
+        }
+      });
+    });
+  });
+</script>
+
+<style>
+  .tag.is-clickable {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+  }
+
+  .tag.is-active {
+    font-size: 1.1rem;
+    font-weight: bold;
+  }
+
+  .tag.is-purple {
+    background-color: rebeccapurple;
+    color: white;
+  }
+
+  .leitura-icon {
+    font-size: 1.1em;
+    opacity: 0.8;
+  }
+
+  .is-hidden {
+    display: none !important;
+  }
+
+  .leitura-formatada {
+    padding-left: 1.25rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .leitura-formatada p {
+    font-style: italic;
+  }
+
+  .box-info {
+    background-color: #f0f8ff;
+    border-left: 5px solid #209cee;
+  }
+
+  .box-link {
+    background-color: #eef4fb;
+    border-left: 5px solid #485fc7;
+  }
+
+  .box-success {
+    background-color: #f0fdf4;
+    border-left: 5px solid #23d160;
+  }
+
+  @media screen and (max-width: 768px) {
+    .leitura-formatada {
+      padding-left: 0.75rem;
+      padding-right: 0.75rem;
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    .leitura-formatada p {
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .tags.is-multiline .tag {
+      margin-bottom: 0.5rem;
+    }
+
+    .leitura-box {
+      width: 100%;
+    }
+
+    .tag.is-clickable {
+      font-size: 0.875rem;
+      padding: 0.5em 0.75em;
+    }
+
+    .title.is-5 {
+      font-size: 1.1rem;
+    }
+
+    .title.is-4 {
+      font-size: 1.25rem;
+    }
+
+    .box {
+      padding: 1rem;
+    }
+  }
+</style>
