@@ -1,11 +1,19 @@
 <footer class="footer">
   <div class="content has-text-centered">
-    <p>&copy; {{ 'now' | date: '%Y' }} Escola. Todos os direitos reservados.</p>
+    <p>&copy; {{ 'now' | date: '%Y' }} Escola com Maria. Código disponível sob licença MIT.</p>
     <p class="title">Fale Conosco</p>
     <p>
       Email:
-      <a href="mailto:escolacommaria@gmail.com" class="email-link"> escolacommaria@gmail.com </a>
+      <a href="mailto:escolacommaria@gmail.com" class="email-link">escolacommaria@gmail.com</a>
     </p>
+    <div class="social-icons">
+      <a href="https://instagram.com/escolacommaria" target="_blank" aria-label="Instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="https://facebook.com/escolacommaria" target="_blank" aria-label="Facebook">
+        <i class="fab fa-facebook"></i>
+      </a>
+    </div>
   </div>
 </footer>
 
@@ -29,5 +37,20 @@
   .footer a.email-link:hover {
     color: rgb(255, 215, 0);
     text-decoration: none;
+  }
+
+  .footer .social-icons {
+    margin-top: 10px;
+  }
+
+  .footer .social-icons a {
+    color: rgb(196, 179, 95);
+    margin: 0 10px;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+  }
+
+  .footer .social-icons a:hover {
+    color: rgb(255, 215, 0);
   }
 </style>
