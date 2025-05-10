@@ -2,6 +2,10 @@ url: "https://escola-com-maria.pages.dev/"
 
 permalink: pretty
 template_engine: liquid
+
+paths:
+  static: ["images"]
+
 environment:
   development:
     FORMSPREE_URL: "{{ site.environment.FORMSPREE_URL }}"
