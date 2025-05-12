@@ -144,8 +144,7 @@ theme: light-theme
   }
 </style>
 
-{% if site.data.biblia %}
-  <script>
+<script>
     const dataBiblia = {
       antigo: {{ site.data.biblia.antigoTestamento | jsonify }},
       novo: {{ site.data.biblia.novoTestamento | jsonify }}
@@ -343,7 +342,4 @@ theme: light-theme
     document.querySelector(".modal-background").onclick = closeModal;
   
     updateMainHeaderHeight();
-  </script>
-{% else %}
-  <p class="notification is-danger">Erro: O arquivo de dados da Bíblia não está disponível.</p>
-{% endif %}
+</script>
