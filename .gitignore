@@ -1,5 +1,6 @@
 .env
 *.log
+_cache/
 
 # Bridgetown
 output
