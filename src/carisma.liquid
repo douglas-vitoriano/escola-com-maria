@@ -22,7 +22,7 @@ theme: light-theme
       <li>Ser almas de oração e reparação como <strong>São Pio de Pietrelcina;</strong></li>
       <li>
         Consagrar-nos totalmente a Jesus pelas mãos de Maria, como ensinou
-        <strong>São Luís Maria Grignion de Montfort.</strong>
+        <strong>São Luís Maria Grignion de Montfort;</strong>
       </li>
     </ul>
 
@@ -44,82 +44,62 @@ theme: light-theme
 
 <div class="modal" id="modal-santo">
   <div class="modal-background" onclick="fecharModal()"></div>
-  <div class="modal-card" style="width: 70vw; max-height: 80vh;">
-    <header class="modal-card-head">
-      <p class="modal-card-title" id="modal-titulo"></p>
+  <div class="modal-card" style="width: 70vw; max-height: 80vh; background: white;">
+    <header class="modal-card-head" style="background: white; border: none;">
+      <p class="modal-card-title" id="modal-titulo" style="color: #C4B35F;"></p>
       <button class="delete" aria-label="close" onclick="fecharModal()"></button>
     </header>
-    <section class="modal-card-body" id="modal-conteudo" style="overflow-y: auto;"></section>
-    <footer class="modal-card-foot is-flex is-justify-content-center is-hidden-desktop">
-      <button class="button botao-fechar-mobile" onclick="fecharModal()">Fechar</button>
+    <section class="modal-card-body" id="modal-conteudo" style="overflow-y: auto; background: white;"></section>
+    <footer
+      class="modal-card-foot is-flex is-justify-content-center is-hidden-desktop"
+      style="background: white; border: none;"
+    >
+      <button class="button" style="background-color: #C4B35F; color: black;" onclick="fecharModal()">Fechar</button>
     </footer>
   </div>
 </div>
 
 <style>
-  .modal-card-body p {
-    font-size: 1.05rem;
-    line-height: 1.6;
-    text-align: justify;
-  }
-
   .image.is-clickable {
     cursor: pointer;
     transition: transform 0.2s ease;
   }
-
   .image.is-clickable:hover {
     transform: scale(1.05);
   }
-
-  .is-clickable {
-    cursor: pointer;
-  }
-
   .modal-columns {
     display: flex;
     flex-direction: row;
     gap: 2rem;
-    align-items: flex-start;
     flex-wrap: wrap;
+    align-items: flex-start;
   }
-
   .modal-image {
     flex: 0 0 300px;
     text-align: center;
   }
-
+  .modal-image img {
+    width: 100%;
+    border-radius: 12px;
+  }
   .modal-dados {
     flex: 1;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     line-height: 1.6;
+    text-align: justify;
   }
-
-  .botao-fechar-mobile {
-    background-color: #e74c3c;
-    color: white;
-    border: none;
-  }
-
-  .botao-fechar-mobile:hover {
-    background-color: #c0392b;
-    color: white;
-  }
-
   @media (max-width: 1024px) {
     .modal-columns {
       flex-direction: column;
       align-items: center;
     }
-
-    .modal-card {
-      width: 90vw !important;
-      max-height: 90vh !important;
-    }
-
     .modal-dados {
       text-align: center;
       font-size: 1.1rem;
+    }
+    .modal-card {
+      width: 90vw !important;
+      max-height: 90vh !important;
     }
   }
 </style>
@@ -130,11 +110,10 @@ theme: light-theme
   function mostrarSanto(index) {
     const santo = santos[index];
     document.getElementById("modal-titulo").textContent = santo.nome;
-
     document.getElementById("modal-conteudo").innerHTML = `
       <div class="modal-columns">
         <div class="modal-image">
-          <img src="${santo.imagem}" alt="${santo.nome}" style="width: 100%; border-radius: 12px;">
+          <img src="${santo.imagem}" alt="${santo.nome}">
         </div>
         <div class="modal-dados">
           ${santo.dados ? santo.dados : ''}
@@ -143,7 +122,6 @@ theme: light-theme
       <hr>
       <p class="mt-4">${santo.resumo}</p>
     `;
-
     document.getElementById("modal-santo").classList.add("is-active");
   }
 

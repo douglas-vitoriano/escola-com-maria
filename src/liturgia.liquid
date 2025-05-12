@@ -5,7 +5,9 @@ theme: light-theme
 ---
 <section class="section">
   <div class="container content">
-    <h1 class="title is-3">{{ page.title }}</h1>
+    <h1 class="title is-3">
+      <strong>{{ page.title }}</strong>
+    </h1>
 
     {% assign cor_liturgica = site.data.liturgia_hoje.cor | downcase %}
     {% case cor_liturgica %}
@@ -47,18 +49,18 @@ theme: light-theme
     {% assign antifonas = site.data.liturgia_hoje.antifonas %}
 
     {% if antifonas.entrada %}
-      <h2 class="title is-5">Antífona de Entrada</h2>
+      <h2 class="title is-5"><strong>Antífona de Entrada</strong></h2>
       <p>{{ antifonas.entrada }}</p>
     {% endif %}
 
     {% if oracoes.coleta %}
-      <h2 class="title is-5">Oração do Dia / Coleta</h2>
+      <h2 class="title is-5"><strong>Oração do Dia / Coleta</strong></h2>
       <p>{{ oracoes.coleta | newline_to_br }}</p>
     {% endif %}
 
     <hr>
 
-    <h2 class="title is-5">Leituras</h2>
+    <h2 class="title is-5"><strong>Leituras</strong></h2>
     <div class="tags is-multiline mb-4">
       {% for secao in leituras %}
         {% assign nome_secao = secao[0] %}
@@ -138,27 +140,27 @@ theme: light-theme
     <hr>
 
     {% if oracoes.oferendas %}
-      <h2 class="title is-5">Oração sobre as Oferendas</h2>
+      <h2 class="title is-5"><strong>Oração sobre as Oferendas</strong></h2>
       <p>{{ oracoes.oferendas | newline_to_br }}</p>
     {% endif %}
 
     <hr>
 
     {% if antifonas.comunhao %}
-      <h2 class="title is-5">Antífona de Comunhão</h2>
+      <h2 class="title is-5"><strong>Antífona de Comunhão</strong></h2>
       <p>{{ antifonas.comunhao }}</p>
     {% endif %}
 
     <hr>
 
     {% if oracoes.comunhao %}
-      <h2 class="title is-5">Oração após a Comunhão</h2>
+      <h2 class="title is-5"><strong>Oração após a Comunhão</strong></h2>
       <p>{{ oracoes.comunhao | newline_to_br }}</p>
     {% endif %}
 
     {% if oracoes.extras and oracoes.extras.size > 0 %}
       <hr>
-      <h2 class="title is-4">Partes Litúrgicas Especiais</h2>
+      <h2 class="title is-4"><strong>Partes Litúrgicas Especiais</strong></h2>
       {% for extra in oracoes.extras %}
         <h3 class="title is-5">{{ extra.titulo }}</h3>
         <p>{{ extra.texto | newline_to_br }}</p>
@@ -220,7 +222,6 @@ theme: light-theme
   }
 
   .tag.is-active {
-    font-size: 1.1rem;
     font-weight: bold;
   }
 
@@ -235,11 +236,10 @@ theme: light-theme
   }
 
   .is-hidden {
-    display: none !important;
+    display: none;
   }
 
   .leitura-formatada {
-    padding-left: 1.25rem;
     margin-top: 1rem;
     margin-bottom: 1rem;
   }
@@ -267,8 +267,6 @@ theme: light-theme
     .leitura-formatada {
       padding-left: 0.75rem;
       padding-right: 0.75rem;
-      margin-left: 0;
-      margin-right: 0;
     }
 
     .leitura-formatada p {
