@@ -1,7 +1,10 @@
 url: "https://escola-com-maria.pages.dev/"
-
 permalink: pretty
 template_engine: liquid
+
+language: "pt-BR"
+locale: "pt-BR"
+timezone: "America/Sao_Paulo"
 
 paths:
   static: ["images"]

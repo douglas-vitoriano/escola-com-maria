@@ -3,8 +3,10 @@ Bridgetown.configure do |config|
   # `bridgetown.config.yml`. For example:
   init :dotenv
   permalink "pretty"
-  timezone "America/Los_Angeles"
-  #
+  config.timezone = "America/Sao_Paulo"
+
+  ENV['LC_ALL'] = 'pt_BR.UTF-8'
+  ENV['LANG'] = 'pt_BR.UTF-8'
   # You can also modify options on the configuration object directly, like so:
   #
   # config.autoload_paths << "models"

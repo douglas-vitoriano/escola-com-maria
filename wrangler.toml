@@ -1,0 +1,5 @@
+name = "escola-com-maria"
+main = "output/index.html"
+compatibility_date = "2024-05-12"
+account_id = "bc84d76d41b84a599cab59f62333ab6a"
+workers_dev = true

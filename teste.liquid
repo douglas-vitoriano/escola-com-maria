@@ -1,0 +1,10 @@
+---
+layout: default
+title: Teste de Variáveis
+---
+<h1>Teste de Locale</h1>
+
+<p><strong>LANG:</strong> {{ site.environment.LANG }}</p>
+<p><strong>LC_ALL:</strong> {{ site.environment.LC_ALL }}</p>
+
+<p><strong>Data atual formatada:</strong> {{ 'now' | date: '%d de %B de %Y' }}</p>
