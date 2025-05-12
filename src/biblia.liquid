@@ -1,345 +1,347 @@
----
-layout: default
-title: Bíblia
-theme: light-theme
----
-<div class="container main-content" id="main-header">
-  <section class="section">
-    <h1 class="custom-hero has-text-centered is-size-3-tablet is-size-4-mobile">Bíblia Ave Maria</h1>
+{% comment %}
+  ---
+  layout: default
+  title: Bíblia
+  theme: light-theme
+  ---
+  <div class="container main-content" id="main-header">
+    <section class="section">
+      <h1 class="custom-hero has-text-centered is-size-3-tablet is-size-4-mobile">Bíblia Ave Maria</h1>
 
-    <div class="has-text-centered mt-4">
-      <h3 class="has-text-weight-semibold is-size-5-mobile is-size-4-tablet mb-2">Selecione entre:</h3>
-      <div class="is-inline-block">
-        <span class="tag is-light is-rounded is-medium m-1" id="tag-antigo">Antigo Testamento</span>
-        <span class="tag is-light is-rounded is-medium m-1" id="tag-novo">Novo Testamento</span>
+      <div class="has-text-centered mt-4">
+        <h3 class="has-text-weight-semibold is-size-5-mobile is-size-4-tablet mb-2">Selecione entre:</h3>
+        <div class="is-inline-block">
+          <span class="tag is-light is-rounded is-medium m-1" id="tag-antigo">Antigo Testamento</span>
+          <span class="tag is-light is-rounded is-medium m-1" id="tag-novo">Novo Testamento</span>
+        </div>
       </div>
+    </section>
+  </div>
+
+  <div class="modal" id="modal-biblia" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-background"></div>
+    <div class="modal-card" style="width: 95vw; max-width: 1000px;">
+      <header class="modal-card-head">
+        <p class="modal-card-title" id="modal-title">Selecione um Livro</p>
+        <button class="delete" aria-label="close" id="btn-close-modal"></button>
+      </header>
+      <section class="modal-card-body" id="modal-body" style="max-height: 70vh; overflow-y: auto;"></section>
+      <footer class="modal-card-foot is-justify-content-flex-end">
+        <button class="button" id="btn-cancel">Cancelar</button>
+      </footer>
+    </div>
+  </div>
+
+  <section class="section" id="capitulo-container" style="display:none;">
+    <div class="container">
+      <h2 class="title" id="capitulo-titulo">Capítulo</h2>
+      <div id="versiculos-content" class="content box"></div>
+
+      <nav
+        class="pagination is-centered mt-4"
+        role="navigation"
+        aria-label="pagination"
+        id="capitulo-pagination"
+        style="display: none;"
+      >
+        <a class="pagination-previous" id="btn-prev"></a>
+        <a class="pagination-next" id="btn-next"></a>
+      </nav>
     </div>
   </section>
-</div>
 
-<div class="modal" id="modal-biblia" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-  <div class="modal-background"></div>
-  <div class="modal-card" style="width: 95vw; max-width: 1000px;">
-    <header class="modal-card-head">
-      <p class="modal-card-title" id="modal-title">Selecione um Livro</p>
-      <button class="delete" aria-label="close" id="btn-close-modal"></button>
-    </header>
-    <section class="modal-card-body" id="modal-body" style="max-height: 70vh; overflow-y: auto;"></section>
-    <footer class="modal-card-foot is-justify-content-flex-end">
-      <button class="button" id="btn-cancel">Cancelar</button>
-    </footer>
-  </div>
-</div>
+  <style>
+    .livros-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 1rem 0;
+    }
 
-<section class="section" id="capitulo-container" style="display:none;">
-  <div class="container">
-    <h2 class="title" id="capitulo-titulo">Capítulo</h2>
-    <div id="versiculos-content" class="content box"></div>
+    .livro-tag {
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 0.6em 1em;
+      text-align: center;
+    }
 
-    <nav
-      class="pagination is-centered mt-4"
-      role="navigation"
-      aria-label="pagination"
-      id="capitulo-pagination"
-      style="display: none;"
-    >
-      <a class="pagination-previous" id="btn-prev"></a>
-      <a class="pagination-next" id="btn-next"></a>
-    </nav>
-  </div>
-</section>
+    .capitulos-container {
+      margin-top: 0.5rem;
+      text-align: center;
+    }
 
-<style>
-  .livros-wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.5rem;
-    padding: 1rem 0;
-  }
+    .capitulos-container .tag {
+      display: inline-block;
+      margin: 0.25rem;
+      font-size: 0.9rem;
+    }
 
-  .livro-tag {
-    font-weight: 600;
-    font-size: 0.9rem;
-    padding: 0.6em 1em;
-    text-align: center;
-  }
-
-  .capitulos-container {
-    margin-top: 0.5rem;
-    text-align: center;
-  }
-
-  .capitulos-container .tag {
-    display: inline-block;
-    margin: 0.25rem;
-    font-size: 0.9rem;
-  }
-
-  .versiculos-container {
-    max-height: 300px;
-    overflow-y: auto;
-    background: #f9f9f9;
-    padding: 1rem;
-    border-radius: 5px;
-  }
-
-  #versiculos-content sup {
-    font-size: 0.8rem;
-    color: #555;
-    margin-right: 2px;
-  }
-
-  #main-header {
-    display: flex;
-    flex-direction: column;
-    transition: min-height 0.3s ease-in-out;
-  }
-
-  #main-header.empty {
-    min-height: 74vh;
-  }
-
-  .modal-body-flex {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-
-  .livros-wrapper {
-    flex: 1 1 40%;
-    max-width: 300px;
-    overflow-y: auto;
-    max-height: 60vh;
-    border-right: 1px solid #ddd;
-    padding-right: 1rem;
-  }
-
-  #capitulos-list {
-    flex: 1 1 60%;
-    max-height: 60vh;
-    overflow-y: auto;
-    padding-left: 1rem;
-  }
-
-  @media screen and (max-width: 768px) {
-    .modal-card {
-      width: 95vw !important;
+    .versiculos-container {
+      max-height: 300px;
+      overflow-y: auto;
+      background: #f9f9f9;
       padding: 1rem;
+      border-radius: 5px;
     }
 
-    .tag {
-      font-size: 0.85rem !important;
-      padding: 0.4em 0.75em !important;
+    #versiculos-content sup {
+      font-size: 0.8rem;
+      color: #555;
+      margin-right: 2px;
     }
 
-    .custom-hero {
-      font-size: 28px !important;
+    #main-header {
+      display: flex;
+      flex-direction: column;
+      transition: min-height 0.3s ease-in-out;
     }
 
-    .title {
-      font-size: 1.25rem !important;
+    #main-header.empty {
+      min-height: 74vh;
     }
-  }
-</style>
 
-<script>
-    const dataBiblia = {
-      antigo: {{ site.data.biblia.antigoTestamento | jsonify }},
-      novo: {{ site.data.biblia.novoTestamento | jsonify }}
-    };
-  
-    const modal = document.getElementById("modal-biblia");
-    const modalBody = document.getElementById("modal-body");
-    const capituloContainer = document.getElementById("capitulo-container");
-    const capituloTitulo = document.getElementById("capitulo-titulo");
-    const versiculosContent = document.getElementById("versiculos-content");
-  
-    let selectedLivroNome = null;
-    let currentLivro = null;
-    let currentCapituloIndex = null;
-  
-    const openModal = (tipo) => {
-      const livros = dataBiblia[tipo] || [];
-      if (!livros.length) {
-        alert("Erro ao carregar os livros do tipo: " + tipo);
-        return;
+    .modal-body-flex {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .livros-wrapper {
+      flex: 1 1 40%;
+      max-width: 300px;
+      overflow-y: auto;
+      max-height: 60vh;
+      border-right: 1px solid #ddd;
+      padding-right: 1rem;
+    }
+
+    #capitulos-list {
+      flex: 1 1 60%;
+      max-height: 60vh;
+      overflow-y: auto;
+      padding-left: 1rem;
+    }
+
+    @media screen and (max-width: 768px) {
+      .modal-card {
+        width: 95vw !important;
+        padding: 1rem;
       }
-  
-      modal.classList.add("is-active");
-      modalBody.innerHTML = "";
-  
-      const livroWrapper = document.createElement("div");
-      livroWrapper.className = "livros-wrapper";
-  
-      livros.forEach((livro) => {
-        const tagLivro = document.createElement("span");
-        tagLivro.className = "tag is-clickable is-rounded is-light m-1 livro-tag";
-        tagLivro.textContent = livro.nome;
-  
-        tagLivro.onclick = () => {
-          selectedLivroNome = livro.nome;
-          updateLivroDisplay(livroWrapper, livro);
-          highlightLivroSelecionado();
-        };
-  
-        livroWrapper.appendChild(tagLivro);
-      });
-  
-      const flexWrapper = document.createElement("div");
-      flexWrapper.className = "modal-body-flex";
 
-      flexWrapper.appendChild(livroWrapper);
-      modalBody.appendChild(flexWrapper);
-    };
-  
-    const updateLivroDisplay = (container, livro) => {
-      const previousCapContainer = document.querySelector("#capitulos-list");
-      if (previousCapContainer) previousCapContainer.remove();
-  
-      const capContainer = document.createElement("div");
-      capContainer.id = "capitulos-list";
-      capContainer.className = "capitulos-container";
-  
-      const divider = document.createElement("hr");
-      divider.style.margin = "2rem auto";
-      capContainer.appendChild(divider);
-  
-      const titulo = document.createElement("h4");
-      titulo.className = "title is-5 has-text-centered";
-      titulo.textContent = `Capítulos de ${livro.nome}`;
-      capContainer.appendChild(titulo);
-  
-      livro.capitulos.forEach((cap) => {
-        const tagCap = document.createElement("span");
-        tagCap.className = "tag is-rounded is-light m-1";
-        tagCap.style.cursor = "pointer";
-        tagCap.textContent = `Capítulo ${cap.capitulo}`;
-        tagCap.onclick = () => showVersiculos(livro.nome, cap);
-        capContainer.appendChild(tagCap);
-      });
-  
-      const flexWrapper = modalBody.querySelector(".modal-body-flex");
-      if (flexWrapper) {
-        flexWrapper.appendChild(capContainer);
+      .tag {
+        font-size: 0.85rem !important;
+        padding: 0.4em 0.75em !important;
       }
-  
-      setTimeout(() => {
-        capContainer.scrollIntoView({ behavior: "smooth", block: "start" });
-      }, 100);
-    };
-  
-    const showVersiculos = (livroNome, capitulo) => {
-      closeModal();
-      capituloTitulo.textContent = `${livroNome} - Capítulo ${capitulo.capitulo}`;
-      versiculosContent.innerHTML = "";
-  
-      const div = document.createElement("div");
-      div.style.lineHeight = "1.8";
-      let textoFormatado = capitulo.versiculos.map((vers) => {
-        return `<sup><strong>${vers.versiculo}</strong></sup> ${vers.texto}`;
-      }).join(' ');
-      div.innerHTML = textoFormatado;
-      versiculosContent.appendChild(div);
-  
-      capituloContainer.style.display = "block";
-      document.getElementById("capitulo-pagination").style.display = "flex";
-  
-      const todosLivros = dataBiblia.antigo.concat(dataBiblia.novo);
-      currentLivro = todosLivros.find(l => l.nome === livroNome);
-      currentCapituloIndex = currentLivro.capitulos.findIndex(c => c.capitulo === capitulo.capitulo);
-  
-      updatePagination(todosLivros);
+
+      .custom-hero {
+        font-size: 28px !important;
+      }
+
+      .title {
+        font-size: 1.25rem !important;
+      }
+    }
+  </style>
+
+  <script>
+      const dataBiblia = {
+        antigo: {{ site.data.biblia.antigoTestamento | jsonify }},
+        novo: {{ site.data.biblia.novoTestamento | jsonify }}
+      };
+
+      const modal = document.getElementById("modal-biblia");
+      const modalBody = document.getElementById("modal-body");
+      const capituloContainer = document.getElementById("capitulo-container");
+      const capituloTitulo = document.getElementById("capitulo-titulo");
+      const versiculosContent = document.getElementById("versiculos-content");
+
+      let selectedLivroNome = null;
+      let currentLivro = null;
+      let currentCapituloIndex = null;
+
+      const openModal = (tipo) => {
+        const livros = dataBiblia[tipo] || [];
+        if (!livros.length) {
+          alert("Erro ao carregar os livros do tipo: " + tipo);
+          return;
+        }
+
+        modal.classList.add("is-active");
+        modalBody.innerHTML = "";
+
+        const livroWrapper = document.createElement("div");
+        livroWrapper.className = "livros-wrapper";
+
+        livros.forEach((livro) => {
+          const tagLivro = document.createElement("span");
+          tagLivro.className = "tag is-clickable is-rounded is-light m-1 livro-tag";
+          tagLivro.textContent = livro.nome;
+
+          tagLivro.onclick = () => {
+            selectedLivroNome = livro.nome;
+            updateLivroDisplay(livroWrapper, livro);
+            highlightLivroSelecionado();
+          };
+
+          livroWrapper.appendChild(tagLivro);
+        });
+
+        const flexWrapper = document.createElement("div");
+        flexWrapper.className = "modal-body-flex";
+
+        flexWrapper.appendChild(livroWrapper);
+        modalBody.appendChild(flexWrapper);
+      };
+
+      const updateLivroDisplay = (container, livro) => {
+        const previousCapContainer = document.querySelector("#capitulos-list");
+        if (previousCapContainer) previousCapContainer.remove();
+
+        const capContainer = document.createElement("div");
+        capContainer.id = "capitulos-list";
+        capContainer.className = "capitulos-container";
+
+        const divider = document.createElement("hr");
+        divider.style.margin = "2rem auto";
+        capContainer.appendChild(divider);
+
+        const titulo = document.createElement("h4");
+        titulo.className = "title is-5 has-text-centered";
+        titulo.textContent = `Capítulos de ${livro.nome}`;
+        capContainer.appendChild(titulo);
+
+        livro.capitulos.forEach((cap) => {
+          const tagCap = document.createElement("span");
+          tagCap.className = "tag is-rounded is-light m-1";
+          tagCap.style.cursor = "pointer";
+          tagCap.textContent = `Capítulo ${cap.capitulo}`;
+          tagCap.onclick = () => showVersiculos(livro.nome, cap);
+          capContainer.appendChild(tagCap);
+        });
+
+        const flexWrapper = modalBody.querySelector(".modal-body-flex");
+        if (flexWrapper) {
+          flexWrapper.appendChild(capContainer);
+        }
+
+        setTimeout(() => {
+          capContainer.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 100);
+      };
+
+      const showVersiculos = (livroNome, capitulo) => {
+        closeModal();
+        capituloTitulo.textContent = `${livroNome} - Capítulo ${capitulo.capitulo}`;
+        versiculosContent.innerHTML = "";
+
+        const div = document.createElement("div");
+        div.style.lineHeight = "1.8";
+        let textoFormatado = capitulo.versiculos.map((vers) => {
+          return `<sup><strong>${vers.versiculo}</strong></sup> ${vers.texto}`;
+        }).join(' ');
+        div.innerHTML = textoFormatado;
+        versiculosContent.appendChild(div);
+
+        capituloContainer.style.display = "block";
+        document.getElementById("capitulo-pagination").style.display = "flex";
+
+        const todosLivros = dataBiblia.antigo.concat(dataBiblia.novo);
+        currentLivro = todosLivros.find(l => l.nome === livroNome);
+        currentCapituloIndex = currentLivro.capitulos.findIndex(c => c.capitulo === capitulo.capitulo);
+
+        updatePagination(todosLivros);
+        updateMainHeaderHeight();
+
+        const slugLivro = livroNome.toLowerCase().replace(/\s+/g, "-");
+        history.pushState({}, "", `/biblia/${slugLivro}/${capitulo.capitulo}`);
+      };
+
+      function updatePagination(todosLivros) {
+        const prevBtn = document.getElementById("btn-prev");
+        const nextBtn = document.getElementById("btn-next");
+
+        let prevLivro = currentLivro;
+        let prevIndex = currentCapituloIndex - 1;
+
+        if (prevIndex < 0) {
+          const currentLivroIndex = todosLivros.findIndex(l => l.nome === currentLivro.nome);
+          if (currentLivroIndex > 0) {
+            prevLivro = todosLivros[currentLivroIndex - 1];
+            prevIndex = prevLivro.capitulos.length - 1;
+          } else {
+            prevLivro = null;
+          }
+        }
+
+        let nextLivro = currentLivro;
+        let nextIndex = currentCapituloIndex + 1;
+
+        if (nextIndex >= currentLivro.capitulos.length) {
+          const currentLivroIndex = todosLivros.findIndex(l => l.nome === currentLivro.nome);
+          if (currentLivroIndex < todosLivros.length - 1) {
+            nextLivro = todosLivros[currentLivroIndex + 1];
+            nextIndex = 0;
+          } else {
+            nextLivro = null;
+          }
+        }
+
+        if (prevLivro) {
+          const cap = prevLivro.capitulos[prevIndex];
+          prevBtn.textContent = `← ${prevLivro.nome} ${cap.capitulo}`;
+          prevBtn.onclick = () => showVersiculos(prevLivro.nome, cap);
+          prevBtn.style.visibility = "visible";
+        } else {
+          prevBtn.style.visibility = "hidden";
+        }
+
+        if (nextLivro) {
+          const cap = nextLivro.capitulos[nextIndex];
+          nextBtn.textContent = `${nextLivro.nome} ${cap.capitulo} →`;
+          nextBtn.onclick = () => showVersiculos(nextLivro.nome, cap);
+          nextBtn.style.visibility = "visible";
+        } else {
+          nextBtn.style.visibility = "hidden";
+        }
+      }
+
+      function highlightLivroSelecionado() {
+        const allTags = modalBody.querySelectorAll(".tag");
+        allTags.forEach((tag) => {
+          if (tag.textContent === selectedLivroNome) {
+            tag.classList.remove("is-light");
+            tag.classList.add("is-primary");
+          } else {
+            tag.classList.add("is-light");
+            tag.classList.remove("is-primary");
+          }
+        });
+      }
+
+      function updateMainHeaderHeight() {
+        const mainHeader = document.getElementById("main-header");
+        if (capituloContainer.style.display === "none") {
+          mainHeader.classList.add("empty");
+        } else {
+          mainHeader.classList.remove("empty");
+        }
+      }
+
+      function closeModal() {
+        modal.classList.remove("is-active");
+        selectedLivroNome = null;
+        document.getElementById("capitulo-pagination").style.display = "none";
+        updateMainHeaderHeight();
+      }
+
+      document.getElementById("tag-antigo").onclick = () => openModal("antigo");
+      document.getElementById("tag-novo").onclick = () => openModal("novo");
+      document.getElementById("btn-close-modal").onclick = closeModal;
+      document.getElementById("btn-cancel").onclick = closeModal;
+      document.querySelector(".modal-background").onclick = closeModal;
+
       updateMainHeaderHeight();
-  
-      const slugLivro = livroNome.toLowerCase().replace(/\s+/g, "-");
-      history.pushState({}, "", `/biblia/${slugLivro}/${capitulo.capitulo}`);
-    };
-  
-    function updatePagination(todosLivros) {
-      const prevBtn = document.getElementById("btn-prev");
-      const nextBtn = document.getElementById("btn-next");
-  
-      let prevLivro = currentLivro;
-      let prevIndex = currentCapituloIndex - 1;
-  
-      if (prevIndex < 0) {
-        const currentLivroIndex = todosLivros.findIndex(l => l.nome === currentLivro.nome);
-        if (currentLivroIndex > 0) {
-          prevLivro = todosLivros[currentLivroIndex - 1];
-          prevIndex = prevLivro.capitulos.length - 1;
-        } else {
-          prevLivro = null;
-        }
-      }
-  
-      let nextLivro = currentLivro;
-      let nextIndex = currentCapituloIndex + 1;
-  
-      if (nextIndex >= currentLivro.capitulos.length) {
-        const currentLivroIndex = todosLivros.findIndex(l => l.nome === currentLivro.nome);
-        if (currentLivroIndex < todosLivros.length - 1) {
-          nextLivro = todosLivros[currentLivroIndex + 1];
-          nextIndex = 0;
-        } else {
-          nextLivro = null;
-        }
-      }
-  
-      if (prevLivro) {
-        const cap = prevLivro.capitulos[prevIndex];
-        prevBtn.textContent = `← ${prevLivro.nome} ${cap.capitulo}`;
-        prevBtn.onclick = () => showVersiculos(prevLivro.nome, cap);
-        prevBtn.style.visibility = "visible";
-      } else {
-        prevBtn.style.visibility = "hidden";
-      }
-  
-      if (nextLivro) {
-        const cap = nextLivro.capitulos[nextIndex];
-        nextBtn.textContent = `${nextLivro.nome} ${cap.capitulo} →`;
-        nextBtn.onclick = () => showVersiculos(nextLivro.nome, cap);
-        nextBtn.style.visibility = "visible";
-      } else {
-        nextBtn.style.visibility = "hidden";
-      }
-    }
-  
-    function highlightLivroSelecionado() {
-      const allTags = modalBody.querySelectorAll(".tag");
-      allTags.forEach((tag) => {
-        if (tag.textContent === selectedLivroNome) {
-          tag.classList.remove("is-light");
-          tag.classList.add("is-primary");
-        } else {
-          tag.classList.add("is-light");
-          tag.classList.remove("is-primary");
-        }
-      });
-    }
-  
-    function updateMainHeaderHeight() {
-      const mainHeader = document.getElementById("main-header");
-      if (capituloContainer.style.display === "none") {
-        mainHeader.classList.add("empty");
-      } else {
-        mainHeader.classList.remove("empty");
-      }
-    }
-  
-    function closeModal() {
-      modal.classList.remove("is-active");
-      selectedLivroNome = null;
-      document.getElementById("capitulo-pagination").style.display = "none";
-      updateMainHeaderHeight();
-    }
-  
-    document.getElementById("tag-antigo").onclick = () => openModal("antigo");
-    document.getElementById("tag-novo").onclick = () => openModal("novo");
-    document.getElementById("btn-close-modal").onclick = closeModal;
-    document.getElementById("btn-cancel").onclick = closeModal;
-    document.querySelector(".modal-background").onclick = closeModal;
-  
-    updateMainHeaderHeight();
-</script>
+  </script>
+{% endcomment %}
