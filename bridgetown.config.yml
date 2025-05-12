@@ -11,6 +11,6 @@ paths:
 
 environment:
   development:
-    FORMSPREE_URL: "{{ site.environment.FORMSPREE_URL }}"
+    FORMSPREE_URL: "https://formspree.io/f/mqaqprqj"
   production:
-    FORMSPREE_URL: "{{ site.environment.FORMSPREE_URL }}"
+    FORMSPREE_URL: "https://formspree.io/f/mqaqprqj"
