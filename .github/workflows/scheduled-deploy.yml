@@ -1,0 +1,30 @@
+name: Deploy diário para Cloudflare Pages
+
+on:
+  schedule:
+    - cron: '0 1 * * *'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v3
+
+      - name: Configurar Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+          bundler-cache: true
+
+      - name: Instalar dependências
+        run: bundle install
+
+      - name: Build do site Bridgetown
+        run: bundle exec bridgetown build
+
+      - name: Commit e push das mudanças
+        run: |
+          git config user.name "github-actions"
