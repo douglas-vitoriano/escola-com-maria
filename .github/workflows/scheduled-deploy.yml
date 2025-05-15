@@ -25,6 +25,5 @@ jobs:
       - name: Build do site Bridgetown
         run: bundle exec bridgetown build
 
-      - name: Commit e push das mudanças
-        run: |
-          git config user.name "github-actions"
+      - name: Disparar deploy no Cloudflare Pages
+        run: curl -X POST ${{ secrets.CLOUDFLARE_DEPLOY_HOOK }}
