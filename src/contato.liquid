@@ -1,126 +1,116 @@
 ---
 layout: default
 title: Contato
-theme: light-theme
 ---
 <section class="section">
   <section class="section main-content">
-    <h1 class="custom-hero is-hidden-touch">Contato</h1>
-    <div class="columns is-multiline mt-6 is-hidden-touch">
-      <div class="column is-one-third has-text-centered">
-        <figure class="image is-inline-block">
-          <img class="hero" src="{{ '/images/slide_francisco.jpeg' | relative_url }}" alt="São Francisco">
-        </figure>
-      </div>
-      <div class="column is-one-third has-text-centered">
-        <figure class="image is-inline-block">
-          <img class="hero" src="{{ '/images/slide_pio.jpeg' | relative_url }}" alt="São Pio">
-        </figure>
-      </div>
-      <div class="column is-one-third has-text-centered">
-        <figure class="image is-inline-block">
-          <img class="hero" src="{{ '/images/slide_luis.jpeg' | relative_url }}" alt="São Luís">
-        </figure>
-      </div>
-    </div>
-
-    <h1 class="custom-hero is-hidden-desktop" style="margin-top: -75px;">Contato</h1>
-    <div class="is-hidden-desktop has-text-centered">
-      <figure class="image is-inline-block">
-        <img class="hero" src="{{ '/images/slide_cruz.jpeg' | relative_url }}" alt="Cruz">
-      </figure>
-    </div>
-
-    <br>
-
     <div class="container">
-      <h1 class="custom-title">Pedido de Oração ou Dúvidas</h1>
-      <div id="success-message" class="notification is-success" style="display:none; position: relative;">
-        <button class="delete" id="close-success-message" style="position: absolute; top: 10px; right: 10px;"></button>
-        Mensagem enviada com sucesso. Deus te abençoe! 🙌🌹👑
+      <h1 class="custom-hero">Pedido de Oração ou Dúvidas</h1>
+
+      <div class="columns">
+        <!-- Coluna da Imagem -->
+        <div class="column is-half">
+          <figure class="image">
+            <img src="/images/contato.jpeg" alt="Momento de oração" style="border-radius: 12px;">
+          </figure>
+        </div>
+
+        <!-- Coluna do Formulário -->
+        <div class="column is-half">
+          <div id="success-message" class="notification is-success" style="display:none; position: relative;">
+            <button
+              class="delete"
+              id="close-success-message"
+              style="position: absolute; top: 10px; right: 10px;"
+            ></button>
+            Mensagem enviada com sucesso. Deus te abençoe! 🙌🌹👑
+          </div>
+
+          <form id="contact-form" action="https://formspree.io/f/mqaqprqj" method="POST">
+            <div class="field">
+              <label class="label">Nome completo:</label>
+              <div class="control">
+                <input
+                  class="input"
+                  type="text"
+                  name="nome"
+                  placeholder="Seu nome completo"
+                  required
+                  pattern="[A-Za-záéíóúÁÉÍÓÚãõáàâéêíóõô\s]+"
+                  title="Por favor, insira um nome válido"
+                  minlength="3"
+                >
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="label">E-mail:</label>
+              <div class="control">
+                <input
+                  class="input"
+                  type="email"
+                  name="email"
+                  placeholder="Seu e-mail"
+                  required
+                  pattern="^[^@\s]+@[^@\s]+\.[^@\s]+$"
+                  title="Por favor, insira um e-mail válido"
+                >
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="label">Cidade e Estado:</label>
+              <div class="control">
+                <input
+                  class="input"
+                  type="text"
+                  name="cidade"
+                  placeholder="Sua cidade e estado"
+                  required
+                  pattern="[A-Za-záéíóúÁÉÍÓÚãõáàâéêíóõô\s]+"
+                  title="Por favor, insira uma cidade válida"
+                  minlength="2"
+                >
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="label">Paróquia e Comunidade:</label>
+              <div class="control">
+                <input
+                  class="input"
+                  type="text"
+                  name="paroquia"
+                  placeholder="Sua diocese, paróquia e comunidade"
+                  required
+                  pattern="[A-Za-záéíóúÁÉÍÓÚãõáàâéêíóõô\s]+"
+                  title="Por favor, insira o nome da paróquia"
+                  minlength="2"
+                >
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="label">Pedido de oração ou dúvida:</label>
+              <div class="control">
+                <textarea
+                  class="textarea"
+                  name="mensagem"
+                  placeholder="Escreva aqui seu pedido ou dúvida..."
+                  required
+                  rows="10"
+                ></textarea>
+              </div>
+            </div>
+
+            <div class="field is-grouped">
+              <div class="control">
+                <button class="button is-warning is-light custom-button" type="submit">Enviar</button>
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
-      <form id="contact-form" action="https://formspree.io/f/mqaqprqj" method="POST">
-        <div class="field">
-          <label class="label">Nome completo:</label>
-          <div class="control">
-            <input
-              class="input"
-              type="text"
-              name="nome"
-              placeholder="Seu nome completo"
-              required
-              pattern="[A-Za-záéíóúÁÉÍÓÚãõáàâéêíóõô\s]+"
-              title="Por favor, insira um nome válido"
-              minlength="3"
-            >
-          </div>
-        </div>
-
-        <div class="field">
-          <label class="label">E-mail:</label>
-          <div class="control">
-            <input
-              class="input"
-              type="email"
-              name="email"
-              placeholder="Seu e-mail"
-              required
-              pattern="^[^@\s]+@[^@\s]+\.[^@\s]+$"
-              title="Por favor, insira um e-mail válido"
-            >
-          </div>
-        </div>
-
-        <div class="field">
-          <label class="label">Cidade e Estado:</label>
-          <div class="control">
-            <input
-              class="input"
-              type="text"
-              name="cidade"
-              placeholder="Sua cidade e estado"
-              required
-              pattern="[A-Za-záéíóúÁÉÍÓÚãõáàâéêíóõô\s]+"
-              title="Por favor, insira uma cidade válida"
-              minlength="2"
-            >
-          </div>
-        </div>
-
-        <div class="field">
-          <label class="label">Paróquia e Comunidade:</label>
-          <div class="control">
-            <input
-              class="input"
-              type="text"
-              name="paroquia"
-              placeholder="Sua diocese, paróquia e comunidade"
-              required
-              pattern="[A-Za-záéíóúÁÉÍÓÚãõáàâéêíóõô\s]+"
-              title="Por favor, insira o nome da paróquia"
-              minlength="2"
-            >
-          </div>
-        </div>
-
-        <div class="field">
-          <label class="label">Pedido de oração ou dúvida:</label>
-          <div class="control">
-            <textarea
-              class="textarea"
-              name="mensagem"
-              placeholder="Escreva aqui seu pedido ou dúvida..."
-              required
-            ></textarea>
-          </div>
-        </div>
-
-        <div class="field is-grouped">
-          <div class="control">
-            <button class="button is-warning is-light custom-button" type="submit">Enviar</button>
-          </div>
-        </div>
-      </form>
     </div>
   </section>
 </section>
@@ -147,3 +137,17 @@ theme: light-theme
     document.getElementById('success-message').style.display = 'none';
   });
 </script>
+
+<style>
+  .form_title {
+    color: black;
+    font-size: 40px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .custom-hero {
+      text-align: center;
+      font-size: 24px;
+    }
+  }
+</style>

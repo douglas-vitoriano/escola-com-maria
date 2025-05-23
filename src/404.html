@@ -3,8 +3,98 @@ permalink: /404.html
 layout: default
 ---
 
-<h1>404</h1>
+<div class="container">
+  <h1>404</h1>
+  <figure class="image is-inline-block">
+    <img class="hero" src="{{ '/images/error404.jpeg' | relative_url }}" alt="Erro 404">
+  </figure>
+  <p class="subtitle">
+    Ops! São Pio pisou no fio... <br>
+    Não foi possível encontrar esta página.
+  </p>
+  <a class="button" href="/">← Voltar</a>
+</div>
 
-<h2>Page Not Found :(</h2>
+<style>
+  body {
+    background-color: #f4f6f8;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    overflow-x: hidden;
+  }
 
-<p>The requested page could not be found.</p>
+  .container {
+    text-align: center;
+    padding: 60px 20px;
+  }
+
+  h1 {
+    font-size: 6rem;
+    color: #000;
+    margin-bottom: 20px;
+    margin-top: -20px;
+    font-weight: bold;
+  }
+
+  .subtitle {
+    margin-top: 30px;
+    font-size: 1.8rem;
+    color: #222;
+    line-height: 1.5;
+  }
+
+  .image img.hero {
+    width: 400px;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+    object-fit: cover;
+  }
+
+  .button {
+    background-color: #abcaeb;
+    color: #000;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+    margin-top: 20px;
+  }
+
+  .button:hover {
+    background-color: #6783a0;
+  }
+
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 4rem;
+      margin-top: 0;
+    }
+
+    .subtitle {
+      font-size: 1.3rem;
+      margin-top: 20px;
+    }
+
+    .button {
+      width: 90%;
+      padding: 14px 0;
+      font-size: 1rem;
+    }
+
+    .image img.hero {
+      width: 400px;
+      max-width: none;
+    }
+
+    .container {
+      padding: 40px 10px;
+    }
+  }
+</style>

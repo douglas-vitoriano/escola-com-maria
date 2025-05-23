@@ -1,0 +1,168 @@
+---
+layout: default
+title: Formação
+---
+<div class="container is-widescreen">
+  <div id="notification" class="notification is-info">
+    Brevemente, teremos mais formações em vídeos
+    <button id="close-btn" class="delete" aria-label="close"></button>
+  </div>
+</div>
+
+<div class="container">
+  <div class="section">
+    <div class="columns">
+      <div class="column has-text-centered">
+        <h1 class="custom-hero">Formação</h1>
+      </div>
+    </div>
+
+    <div class="columns is-multiline">
+      {% for card in site.data.formacoes %}
+        <div class="column is-12-mobile is-6-tablet is-4-desktop">
+          <div class="card">
+            <div class="card-image">
+              <a href="{{ card.url }}">
+                <figure class="image">
+                  <img src="{{ card.image }}" alt="{{ card.title }}">
+                </figure>
+              </a>
+            </div>
+            <div class="card-content">
+              <div class="media">
+                <div class="media-content has-text-centered">
+                  <p class="title is-4">{{ card.title }}</p>
+                </div>
+              </div>
+              <div class="content">
+                {{ card.description }}
+              </div>
+              <div class="buttons is-centered" style="margin-top: 1rem;">
+                <a class="button is-link is-fullwidth" href="{{ card.url }}">Acessar Conteúdo</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Mantém o tamanho e estilo das cards */
+  .card-image img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+  }
+
+  .card-image img:hover {
+    transform: scale(1.03);
+  }
+
+  .card-content .title {
+    text-align: left;
+  }
+
+  .card-content .content {
+    text-align: left;
+  }
+
+  .buttons.is-centered {
+    justify-content: center;
+  }
+
+  /* Estilo da notificação */
+  #notification {
+    max-width: 900px; /* largura fixa confortável */
+    margin: 1.5rem auto;
+    font-weight: 700;
+    font-size: 1.6rem; /* maior que o padrão */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #ffffff;
+    background: linear-gradient(135deg, #3298dc, #0b76c2);
+    box-shadow: 0 8px 20px rgba(50, 152, 220, 0.4);
+    border-radius: 12px;
+    padding: 1.2rem 2rem;
+    position: relative;
+    overflow: hidden;
+    cursor: default;
+
+    /* animação suave de fade-in e slide */
+    animation: slideFadeIn 0.8s ease forwards;
+  }
+
+  /* Animação entrada */
+  @keyframes slideFadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Hover suave para um leve destaque */
+  #notification:hover {
+    background: linear-gradient(135deg, #3aa0f0, #107ad9);
+    box-shadow: 0 12px 30px rgba(58, 160, 240, 0.6);
+  }
+
+  /* Botão fechar (X) */
+  #close-btn {
+    position: absolute;
+    top: 0.6rem;
+    right: 1rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
+  }
+
+  #close-btn:hover {
+    opacity: 1;
+  }
+
+  #close-btn::before,
+  #close-btn::after {
+    content: '';
+    position: absolute;
+    top: 12px;
+    left: 6px;
+    width: 12px;
+    height: 2px;
+    background-color: white;
+  }
+  #close-btn::before {
+    transform: rotate(45deg);
+  }
+  #close-btn::after {
+    transform: rotate(-45deg);
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const notification = document.getElementById('notification');
+    const closeBtn = document.getElementById('close-btn');
+    const storageKey = 'formacaoNotificationClosed';
+
+    if (localStorage.getItem(storageKey) === 'true') {
+      notification.style.display = 'none';
+    }
+
+    closeBtn.addEventListener('click', () => {
+      notification.style.display = 'none';
+      localStorage.setItem(storageKey, 'true');
+    });
+  });
+</script>

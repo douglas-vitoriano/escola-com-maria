@@ -1,14 +1,10 @@
 ---
 layout: default
 title: Liturgia Diária
-theme: light-theme
 ---
 <section class="section">
+  <h1 class="custom-hero">Liturgia Diária</h1>
   <div class="container content">
-    <h1 class="title is-3">
-      <strong>{{ page.title }}</strong>
-    </h1>
-
     {% assign cor_liturgica = site.data.liturgia_hoje.cor | downcase %}
     {% case cor_liturgica %}
       {% when 'branco' %}
@@ -23,7 +19,7 @@ theme: light-theme
         {% assign cor_tag = 'is-dark' %}
     {% endcase %}
 
-    <div class="field is-grouped is-grouped-multiline is-flex-wrap-wrap mb-5">
+    <div class="field is-grouped is-grouped-multiline is-flex-wrap-wrap is-justify-content-center mb-5">
       <div class="control">
         <div class="tags has-addons">
           <span class="tag is-dark">Data</span>

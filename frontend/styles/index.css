@@ -74,10 +74,10 @@
   color: rgb(196, 179, 95);
 }
 
-.custom-button:hover {
+/* .custom-button:hover {
   background-color: rgb(59, 59, 56);
   color: black;
-}
+} */
 
 /* Menu burger responsivo */
 .navbar-burger {
@@ -106,7 +106,7 @@ body {
 .custom-title {
   font-size: 60px;
   font-family: 'Georgia', serif;
-  color: rgb(196, 179, 95);
+  color: rgb(59, 59, 56);
   text-align: center;
   margin-bottom: 20px;
 }

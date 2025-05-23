@@ -14,49 +14,411 @@
       >
         <i class="fab fa-instagram"></i>
       </a>
-      {% comment %}
-        <a href="https://facebook.com/escolacommaria" target="_blank" aria-label="Facebook">
-          <i class="fab fa-facebook"></i>
-        </a>
-      {% endcomment %}
     </div>
   </div>
+
+  <div class="audio-player minimized" id="audio-player">
+    <div class="player-header">
+      <p id="player-title" class="player-title">🎧 VOZ DE TROVÃO - COLO DE DEUS</p>
+      <button
+        id="toggle-minimize"
+        class="minimize-button"
+        aria-label="Minimizar player"
+        title="Minimizar / Maximizar player"
+      >
+        <i class="fas fa-chevron-down"></i>
+      </button>
+    </div>
+
+    <audio id="player" style="display:none;">
+      <source id="audio-source" src="/music/voz_de_trovao.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="player-controls">
+      <span id="prev-audio" class="control-button" role="button" tabindex="0" aria-label="Anterior">
+        <i class="fas fa-step-backward"></i>
+      </span>
+
+      <span id="toggle-audio" class="control-button" role="button" tabindex="0" aria-label="Tocar / Pausar">
+        <i class="fas fa-play-circle"></i>
+      </span>
+
+      <span id="next-audio" class="control-button" role="button" tabindex="0" aria-label="Próxima">
+        <i class="fas fa-step-forward"></i>
+      </span>
+
+      <div id="progress-container" class="progress-bar">
+        <div id="progress"></div>
+        <div id="progress-text">00:00 / 00:00</div>
+      </div>
+
+      <button id="volume-icon" class="control-button" aria-label="Volume">
+        <i class="fas fa-volume-up"></i>
+      </button>
+      <input id="volume-control" class="volume-slider" type="range" min="0" max="1" step="0.01" value="1">
+    </div>
+  </div>
+
+  <style>
+    .footer {
+      background-color: black;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .footer p {
+      color: rgb(143, 133, 83);
+      font-size: 1rem;
+    }
+
+    .footer a.email-link {
+      color: rgb(196, 179, 95);
+      text-decoration: underline;
+    }
+
+    .footer a.email-link:hover {
+      color: rgb(255, 215, 0);
+      text-decoration: none;
+    }
+
+    .footer .social-icons {
+      margin-top: 10px;
+    }
+
+    .footer .social-icons a {
+      color: rgb(196, 179, 95);
+      margin: 0 10px;
+      font-size: 1.5rem;
+      transition: color 0.3s ease;
+    }
+
+    .footer .social-icons a:hover {
+      color: rgb(255, 215, 0);
+    }
+
+    .audio-player {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background-color: rgba(0, 0, 0, 0.9);
+      border: 1px solid rgb(196, 179, 95);
+      border-radius: 10px;
+      padding: 10px 12px;
+      z-index: 9999;
+      max-width: 360px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      transition: height 0.3s ease, width 0.3s ease;
+    }
+
+    .player-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .player-title {
+      color: rgb(196, 179, 95);
+      font-size: 0.9rem;
+      margin: 0;
+      font-weight: bold;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 290px;
+    }
+
+    .minimize-button {
+      background: transparent;
+      border: none;
+      color: rgb(196, 179, 95);
+      font-size: 1rem;
+      cursor: pointer;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      user-select: none;
+      padding: 0;
+    }
+
+    .player-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: opacity 0.3s ease;
+    }
+
+    .audio-player.minimized {
+      width: 306px;
+      height: 32px;
+      padding: 6px 12px;
+    }
+
+    .audio-player.minimized .player-controls {
+      opacity: 0;
+      pointer-events: none;
+      height: 0;
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
+    }
+
+    .audio-player.minimized .player-title {
+      max-width: 280px;
+      font-size: 0.85rem;
+    }
+
+    .audio-player.minimized .minimize-button i {
+      transform: rotate(180deg);
+      transition: transform 0.3s ease;
+    }
+
+    /* Controles */
+    .control-button {
+      background: transparent;
+      border: none;
+      color: rgb(196, 179, 95);
+      font-size: 1.2rem;
+      cursor: pointer;
+      width: 24px;
+      text-align: center;
+      user-select: none;
+    }
+
+    .progress-bar {
+      position: relative;
+      background: #444;
+      height: 6px;
+      border-radius: 8px;
+      flex-grow: 1;
+      cursor: pointer;
+      overflow: hidden;
+    }
+
+    .progress-bar div#progress {
+      background: rgb(196, 179, 95);
+      height: 100%;
+      width: 0%;
+      border-radius: 8px 0 0 8px;
+      transition: width 0.1s linear;
+    }
+
+    .progress-bar div#progress-text {
+      position: absolute;
+      top: -14px;
+      width: 100%;
+      text-align: center;
+      color: rgb(196, 179, 95);
+      font-family: monospace;
+      font-size: 0.65rem;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .volume-slider {
+      -webkit-appearance: none;
+      width: 80px;
+      height: 4px;
+      background: #ccc;
+      border-radius: 2px;
+      cursor: pointer;
+      outline: none;
+    }
+
+    .volume-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 10px;
+      height: 10px;
+      background: rgb(196, 179, 95);
+      border-radius: 50%;
+      cursor: pointer;
+      border: none;
+    }
+
+    .volume-slider::-moz-range-thumb {
+      width: 10px;
+      height: 10px;
+      background: rgb(196, 179, 95);
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const playlist = [
+        { name: 'VOZ DE TROVÃO - COLO DE DEUS', file: '/music/voz_de_trovao.mp3' },
+        { name: 'AVE MARIA — COLO DE DEUS', file: '/music/ave_maria.mp3' },
+        { name: 'Belíssimo Esposo', file: '/music/belissimo_esposo.mp3' },
+        { name: 'Acaso Não Sabeis - Flavio Vitor Jr', file: '/music/acaso_nao_sabeis.mp3' },
+        { name: 'Santa Cruz', file: '/music/santa_cruz.mp3' },
+      ];
+
+      let currentIndex = 0;
+
+      const audio = document.getElementById('player');
+      const audioSource = document.getElementById('audio-source');
+      const title = document.getElementById('player-title');
+      const toggle = document.getElementById('toggle-audio');
+      const prevBtn = document.getElementById('prev-audio');
+      const nextBtn = document.getElementById('next-audio');
+      const progressContainer = document.getElementById('progress-container');
+      const progress = document.getElementById('progress');
+      const progressText = document.getElementById('progress-text');
+      const volumeControl = document.getElementById('volume-control');
+      const volumeIconBtn = document.getElementById('volume-icon');
+      const volumeIcon = volumeIconBtn.querySelector('i');
+      const audioPlayer = document.getElementById('audio-player');
+      const minimizeBtn = document.getElementById('toggle-minimize');
+
+      function formatTime(seconds) {
+        const m = Math.floor(seconds / 60)
+          .toString()
+          .padStart(2, '0');
+        const s = Math.floor(seconds % 60)
+          .toString()
+          .padStart(2, '0');
+        return `${m}:${s}`;
+      }
+
+      function loadTrack(index) {
+        const track = playlist[index];
+        audioSource.src = track.file;
+        audio.load();
+        title.textContent = '🎧 ' + track.name;
+        toggle.querySelector('i').classList.remove('fa-pause-circle');
+        toggle.querySelector('i').classList.add('fa-play-circle');
+      }
+
+      function playTrack() {
+        audio.play();
+        toggle.querySelector('i').classList.remove('fa-play-circle');
+        toggle.querySelector('i').classList.add('fa-pause-circle');
+      }
+
+      function pauseTrack() {
+        audio.pause();
+        toggle.querySelector('i').classList.remove('fa-pause-circle');
+        toggle.querySelector('i').classList.add('fa-play-circle');
+      }
+
+      function nextTrack() {
+        currentIndex = (currentIndex + 1) % playlist.length;
+        localStorage.setItem('audioIndex', currentIndex);
+        localStorage.setItem('audioTime', 0);
+        loadTrack(currentIndex);
+        playTrack();
+      }
+
+      function prevTrack() {
+        currentIndex = (currentIndex - 1 + playlist.length) % playlist.length;
+        localStorage.setItem('audioIndex', currentIndex);
+        localStorage.setItem('audioTime', 0);
+        loadTrack(currentIndex);
+        playTrack();
+      }
+
+      const savedIndex = parseInt(localStorage.getItem('audioIndex'));
+      const savedTime = parseFloat(localStorage.getItem('audioTime'));
+      const savedIsPlaying = localStorage.getItem('audioIsPlaying') === 'true';
+      const savedVolume = parseFloat(localStorage.getItem('audioVolume'));
+
+      if (!isNaN(savedIndex) && savedIndex >= 0 && savedIndex < playlist.length) {
+        currentIndex = savedIndex;
+      }
+
+      loadTrack(currentIndex);
+
+      audio.addEventListener('loadedmetadata', () => {
+        if (!isNaN(savedTime)) {
+          audio.currentTime = savedTime;
+        }
+        if (!isNaN(savedVolume) && savedVolume >= 0 && savedVolume <= 1) {
+          audio.volume = savedVolume;
+          volumeControl.value = savedVolume;
+          updateVolumeIcon(savedVolume);
+        }
+        if (savedIsPlaying) {
+          playTrack();
+        }
+      });
+
+      toggle.addEventListener('click', () => {
+        if (audio.paused) {
+          playTrack();
+        } else {
+          pauseTrack();
+        }
+      });
+
+      prevBtn.addEventListener('click', prevTrack);
+      nextBtn.addEventListener('click', nextTrack);
+
+      toggle.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          toggle.click();
+        }
+      });
+
+      audio.addEventListener('timeupdate', () => {
+        const percent = (audio.currentTime / audio.duration) * 100;
+        progress.style.width = percent + '%';
+        progressText.textContent = `${formatTime(audio.currentTime)} / ${formatTime(audio.duration)}`;
+
+        localStorage.setItem('audioIndex', currentIndex);
+        localStorage.setItem('audioTime', audio.currentTime);
+        localStorage.setItem('audioIsPlaying', !audio.paused);
+      });
+
+      progressContainer.addEventListener('click', (e) => {
+        const rect = progressContainer.getBoundingClientRect();
+        const clickX = e.clientX - rect.left;
+        const width = rect.width;
+        const clickPercent = clickX / width;
+        audio.currentTime = clickPercent * audio.duration;
+      });
+
+      audio.addEventListener('ended', nextTrack);
+
+      function updateVolumeIcon(volume) {
+        if (volume === 0) {
+          volumeIcon.className = 'fas fa-volume-mute';
+        } else if (volume > 0 && volume <= 0.5) {
+          volumeIcon.className = 'fas fa-volume-down';
+        } else {
+          volumeIcon.className = 'fas fa-volume-up';
+        }
+      }
+
+      volumeControl.addEventListener('input', () => {
+        audio.volume = volumeControl.value;
+        updateVolumeIcon(audio.volume);
+        localStorage.setItem('audioVolume', audio.volume); // salva volume
+      });
+
+      volumeIconBtn.addEventListener('click', () => {
+        if (audio.volume > 0) {
+          audio.volume = 0;
+          volumeControl.value = 0;
+          updateVolumeIcon(0);
+        } else {
+          audio.volume = 1;
+          volumeControl.value = 1;
+          updateVolumeIcon(1);
+        }
+        localStorage.setItem('audioVolume', audio.volume); // salva ao clicar ícone
+      });
+
+      updateVolumeIcon(audio.volume);
+
+      minimizeBtn.addEventListener('click', () => {
+        audioPlayer.classList.toggle('minimized');
+      });
+    });
+  </script>
 </footer>
-
-<style>
-  .footer {
-    background-color: black;
-    padding: 20px;
-    text-align: center;
-  }
-
-  .footer p {
-    color: rgb(143, 133, 83);
-    font-size: 1rem;
-  }
-
-  .footer a.email-link {
-    color: rgb(196, 179, 95);
-    text-decoration: underline;
-  }
-
-  .footer a.email-link:hover {
-    color: rgb(255, 215, 0);
-    text-decoration: none;
-  }
-
-  .footer .social-icons {
-    margin-top: 10px;
-  }
-
-  .footer .social-icons a {
-    color: rgb(196, 179, 95);
-    margin: 0 10px;
-    font-size: 1.5rem;
-    transition: color 0.3s ease;
-  }
-
-  .footer .social-icons a:hover {
-    color: rgb(255, 215, 0);
-  }
-</style>

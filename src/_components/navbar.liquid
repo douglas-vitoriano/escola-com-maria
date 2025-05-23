@@ -1,7 +1,7 @@
 <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <a class="navbar-item navbar-title" href="/">
-      <img src="{{ '/images/logo_preto.png' | relative_url }}" class="navbar-logo">
+      <img src="{{ '/images/logo_preto.png' | relative_url }}" class="navbar-logo" alt="Logo Escola com Maria">
       <span class="brand-text">ESCOLA COM MARIA</span>
     </a>
 
@@ -14,6 +14,12 @@
 
   <div id="navbarMain" class="navbar-menu">
     <div class="navbar-end">
+      <div class="navbar-item" id="formacaoDropdownContainer">
+        <a class="button is-warning is-light custom-button" id="formacaoButton">
+          Formação <span id="formacaoArrow" style="margin-left: 5px;">▼</span>
+        </a>
+        <div class="navbar-dropdown" id="formacaoDropdown" style="display: none;"></div>
+      </div>
       <div class="navbar-item">
         <a class="button is-warning is-light custom-button" href="{{ '/carisma' | relative_url }}"> Carisma </a>
       </div>
@@ -83,9 +89,20 @@
   .navbar-item {
     color: rgb(196, 179, 95);
   }
-
   .navbar-item:hover {
     color: rgb(59, 59, 56);
+  }
+
+  .navbar-dropdown .navbar-item {
+    color: rgb(196, 179, 95);
+  }
+  .navbar-dropdown .navbar-item:hover {
+    background-color: rgb(196, 179, 95);
+    color: black;
+  }
+
+  .navbar-item.is-hoverable > a.button {
+    cursor: pointer;
   }
 
   @media (max-width: 768px) {
@@ -107,6 +124,60 @@
         el.classList.toggle('is-active');
         $target.classList.toggle('is-active');
       });
+    });
+  });
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const $navbarBurgers = Array.from(document.querySelectorAll('.navbar-burger'));
+    $navbarBurgers.forEach((el) => {
+      el.addEventListener('click', () => {
+        const target = el.dataset.target;
+        const $target = document.getElementById(target);
+        el.classList.toggle('is-active');
+        $target.classList.toggle('is-active');
+      });
+    });
+
+    const formacaoButton = document.getElementById('formacaoButton');
+    const formacaoDropdown = document.getElementById('formacaoDropdown');
+    const formacaoArrow = document.getElementById('formacaoArrow');
+
+    const links = [
+      { title: 'Ajuda', href: '/formacoes/ajuda/' },
+      { title: 'Anunciação', href: '/formacoes/anunciacao/' },
+      { title: 'Infalibilidade Papal', href: '/formacoes/infalibilidade_papal/' },
+      { title: 'Purgatório', href: '/formacoes/purgatorio/' },
+      { title: 'Virtudes Teologais', href: '/formacoes/virtudes_teologais/' },
+      { divider: true },
+      { title: 'Todos', href: '/formacao' },
+    ];
+
+    links.forEach((link) => {
+      if (link.divider) {
+        const hr = document.createElement('hr');
+        hr.className = 'dropdown-divider';
+        formacaoDropdown.appendChild(hr);
+      } else {
+        const a = document.createElement('a');
+        a.className = 'navbar-item';
+        a.href = link.href;
+        a.textContent = link.title;
+        formacaoDropdown.appendChild(a);
+      }
+    });
+
+    formacaoButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      const isVisible = formacaoDropdown.style.display === 'block';
+      formacaoDropdown.style.display = isVisible ? 'none' : 'block';
+      formacaoArrow.textContent = isVisible ? '▼' : '▲';
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!formacaoDropdown.contains(e.target) && !formacaoButton.contains(e.target)) {
+        formacaoDropdown.style.display = 'none';
+        formacaoArrow.textContent = '▼';
+      }
     });
   });
 </script>

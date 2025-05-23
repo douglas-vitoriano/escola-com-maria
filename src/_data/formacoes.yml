@@ -1,0 +1,41 @@
+- id: credo
+  title: Credo
+  image: /images/formacao/credo.jpeg
+  description: >
+    Estudo detalhado das principais verdades da fé católica, conforme professadas na oração do Credo, que expressa a essência da crença cristã desde a igreja primitiva.
+  url: /formacoes/credo/
+
+- id: ajuda
+  title: Ajuda
+  image: /images/formacao/ajuda.jpeg
+  description: >
+    Você não está sozinho. Se estiver enfrentando tristeza profunda, angústia ou pensamentos difíceis, saiba que é possível encontrar apoio e novas perspectivas.
+  url: /formacoes/ajuda/
+
+- id: anunciacao
+  title: Ave Maria
+  image: /images/formacao/anunciacao.jpeg
+  description: >
+    Uma reflexão aprofundada sobre a oração da Ave Maria, destacando sua importância na devoção mariana e seu papel na conexão espiritual com a Virgem Maria.
+  url: /formacoes/anunciacao/
+
+- id: infalibilidade_papal
+  title: Infalibilidade Papal
+  image: /images/formacao/infalibilidade_papal.jpeg
+  description: >
+    Exploração do ensinamento da infalibilidade papal, explicando como o Papa, ao falar ex cathedra, é preservado de erro em questões de fé e moral.
+  url: /formacoes/infalibilidade_papal/
+
+- id: virtudes_teologais
+  title: Virtudes Teologais
+  image: /images/formacao/virtudes.jpeg
+  description: >
+    Reflexão sobre as três virtudes teologais: fé, esperança e caridade, pilares da vida cristã, infundidas por Deus na alma e fundamentais para alcançar a salvação.
+  url: /formacoes/virtudes_teologais/
+
+- id: purgatorio
+  title: Purgatório
+  image: /images/formacao/purgatorio.jpeg
+  description: >
+    Análise da doutrina do purgatório, que trata da purificação das almas e da esperança na misericórdia divina para alcançar a vida eterna junto a Deus.
+  url: /formacoes/purgatorio/
