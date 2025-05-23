@@ -333,19 +333,28 @@
 
       loadTrack(currentIndex);
 
-      audio.addEventListener('loadedmetadata', () => {
-        if (!isNaN(savedTime)) {
-          audio.currentTime = savedTime;
+      function restoreAudioState() {
+        if (audio.readyState >= 2) {
+          // HAVE_CURRENT_DATA
+          if (!isNaN(savedTime)) {
+            audio.currentTime = savedTime;
+          }
+
+          if (!isNaN(savedVolume) && savedVolume >= 0 && savedVolume <= 1) {
+            audio.volume = savedVolume;
+            volumeControl.value = savedVolume;
+            updateVolumeIcon(savedVolume);
+          }
+
+          if (savedIsPlaying) {
+            playTrack();
+          }
+        } else {
+          setTimeout(restoreAudioState, 100);
         }
-        if (!isNaN(savedVolume) && savedVolume >= 0 && savedVolume <= 1) {
-          audio.volume = savedVolume;
-          volumeControl.value = savedVolume;
-          updateVolumeIcon(savedVolume);
-        }
-        if (savedIsPlaying) {
-          playTrack();
-        }
-      });
+      }
+
+      restoreAudioState();
 
       toggle.addEventListener('click', () => {
         if (audio.paused) {
@@ -398,7 +407,7 @@
       volumeControl.addEventListener('input', () => {
         audio.volume = volumeControl.value;
         updateVolumeIcon(audio.volume);
-        localStorage.setItem('audioVolume', audio.volume); // salva volume
+        localStorage.setItem('audioVolume', audio.volume);
       });
 
       volumeIconBtn.addEventListener('click', () => {
@@ -411,7 +420,7 @@
           volumeControl.value = 1;
           updateVolumeIcon(1);
         }
-        localStorage.setItem('audioVolume', audio.volume); // salva ao clicar ícone
+        localStorage.setItem('audioVolume', audio.volume);
       });
 
       updateVolumeIcon(audio.volume);
