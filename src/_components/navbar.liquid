@@ -29,14 +29,67 @@
       <div class="navbar-item">
         <a class="button is-warning is-light custom-button" href="{{ '/contato' | relative_url }}"> Contato </a>
       </div>
-      {% comment %}
-        <div class="navbar-item">
-          <a class="button is-warning is-light custom-button" href="{{ '/biblia' | relative_url }}"> Biblia </a>
-        </div>
-      {% endcomment %}
     </div>
   </div>
 </nav>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Ativa o burger para exibir/esconder o menu
+    const $navbarBurgers = Array.from(document.querySelectorAll('.navbar-burger'));
+    $navbarBurgers.forEach((el) => {
+      el.addEventListener('click', () => {
+        const target = el.dataset.target;
+        const $target = document.getElementById(target);
+        el.classList.toggle('is-active');
+        $target.classList.toggle('is-active');
+      });
+    });
+
+    // Dropdown de Formação
+    const formacaoButton = document.getElementById('formacaoButton');
+    const formacaoDropdown = document.getElementById('formacaoDropdown');
+    const formacaoArrow = document.getElementById('formacaoArrow');
+
+    const links = [
+      { title: 'Ajuda', href: '/formacoes/ajuda/' },
+      { title: 'Ave Maria', href: '/formacoes/anunciacao/' },
+      { title: 'Infalibilidade Papal', href: '/formacoes/infalibilidade_papal/' },
+      { title: 'Purgatório', href: '/formacoes/purgatorio/' },
+      { title: 'Virtudes Teologais', href: '/formacoes/virtudes_teologais/' },
+      { divider: true },
+      { title: 'Todos', href: '/formacao' },
+    ];
+
+    links.forEach((link) => {
+      if (link.divider) {
+        const hr = document.createElement('hr');
+        hr.className = 'dropdown-divider';
+        formacaoDropdown.appendChild(hr);
+      } else {
+        const a = document.createElement('a');
+        a.className = 'navbar-item';
+        a.href = link.href;
+        a.textContent = link.title;
+        formacaoDropdown.appendChild(a);
+      }
+    });
+
+    formacaoButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      const isVisible = formacaoDropdown.style.display === 'block';
+      formacaoDropdown.style.display = isVisible ? 'none' : 'block';
+      formacaoArrow.textContent = isVisible ? '▼' : '▲';
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!formacaoDropdown.contains(e.target) && !formacaoButton.contains(e.target)) {
+        formacaoDropdown.style.display = 'none';
+        formacaoArrow.textContent = '▼';
+      }
+    });
+  });
+</script>
 
 <style>
   .navbar {
@@ -111,73 +164,3 @@
     }
   }
 </style>
-
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const $navbarBurgers = Array.from(document.querySelectorAll('.navbar-burger'));
-
-    $navbarBurgers.forEach((el) => {
-      el.addEventListener('click', () => {
-        const target = el.dataset.target;
-        const $target = document.getElementById(target);
-
-        el.classList.toggle('is-active');
-        $target.classList.toggle('is-active');
-      });
-    });
-  });
-
-  document.addEventListener('DOMContentLoaded', () => {
-    const $navbarBurgers = Array.from(document.querySelectorAll('.navbar-burger'));
-    $navbarBurgers.forEach((el) => {
-      el.addEventListener('click', () => {
-        const target = el.dataset.target;
-        const $target = document.getElementById(target);
-        el.classList.toggle('is-active');
-        $target.classList.toggle('is-active');
-      });
-    });
-
-    const formacaoButton = document.getElementById('formacaoButton');
-    const formacaoDropdown = document.getElementById('formacaoDropdown');
-    const formacaoArrow = document.getElementById('formacaoArrow');
-
-    const links = [
-      { title: 'Ajuda', href: '/formacoes/ajuda/' },
-      { title: 'Ave Maria', href: '/formacoes/anunciacao/' },
-      { title: 'Infalibilidade Papal', href: '/formacoes/infalibilidade_papal/' },
-      { title: 'Purgatório', href: '/formacoes/purgatorio/' },
-      { title: 'Virtudes Teologais', href: '/formacoes/virtudes_teologais/' },
-      { divider: true },
-      { title: 'Todos', href: '/formacao' },
-    ];
-
-    links.forEach((link) => {
-      if (link.divider) {
-        const hr = document.createElement('hr');
-        hr.className = 'dropdown-divider';
-        formacaoDropdown.appendChild(hr);
-      } else {
-        const a = document.createElement('a');
-        a.className = 'navbar-item';
-        a.href = link.href;
-        a.textContent = link.title;
-        formacaoDropdown.appendChild(a);
-      }
-    });
-
-    formacaoButton.addEventListener('click', (e) => {
-      e.preventDefault();
-      const isVisible = formacaoDropdown.style.display === 'block';
-      formacaoDropdown.style.display = isVisible ? 'none' : 'block';
-      formacaoArrow.textContent = isVisible ? '▼' : '▲';
-    });
-
-    document.addEventListener('click', (e) => {
-      if (!formacaoDropdown.contains(e.target) && !formacaoButton.contains(e.target)) {
-        formacaoDropdown.style.display = 'none';
-        formacaoArrow.textContent = '▼';
-      }
-    });
-  });
-</script>
