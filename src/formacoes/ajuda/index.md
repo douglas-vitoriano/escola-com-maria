@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Jesus te ama e quer que você viva
-image: /images/formacao/ajuda.jpeg
+image: /images/formacao/foi_por_voce.jpg
 description: Reflexão sobre o suicídio à luz da fé católica, ensinamentos da Igreja, apoio espiritual, psicológico e esperança cristã.
 ---
 
@@ -59,7 +59,7 @@ description: Reflexão sobre o suicídio à luz da fé católica, ensinamentos d
       <p>
         A vida humana é sagrada porque foi criada à imagem e semelhança de Deus (Gn 1,27). Somos chamados a preservar a 
         vida e a cuidar do nosso corpo e alma como templo do Espírito Santo (1Cor 6,19-20). O sofrimento, embora real e 
-        muitas vezes profundo, tem um significado redentor quando unido aos sofrimentos de Cristo.
+        muitas vezes profundo, tem um significado redentor quando unido aos sofrimentos de Cristo<i class="fas fa-cross"></i>.
       </p>
       <h2 class="sub_title">A psicologia à luz da fé católica</h2>
       <p>

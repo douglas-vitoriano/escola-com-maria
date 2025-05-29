@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Credo
-image: /images/formacao/credo.jpeg
+image: /images/formacao/credo_black.jpeg
 ---
 <a href="/formacao" class="button is-light" style="margin-bottom: 1rem;">← Voltar</a>
 
@@ -28,7 +28,7 @@ image: /images/formacao/credo.jpeg
         diárias.<br>
         - <strong>Credo Niceno-Constantinopolitano:</strong> Definido nos Concílios de Niceia (325) e Constantinopla
         (381)
-        para combater erros sobre a divindade de Cristo e do Espírito Santo. É este que rezamos na Santa Missa.<br><br>
+        para combater erros sobre a divindade de Cristo<i class="fas fa-cross"></i> e do Espírito Santo. É este que rezamos na Santa Missa.<br><br>
       </p>
     </div>
   </div>
@@ -57,7 +57,7 @@ image: /images/formacao/credo.jpeg
       <h3 class="sec_title">2ª Parte — Deus Filho e a Redenção</h3>
       <ul class="content">
         <li>
-          <strong>“E em Jesus Cristo, seu único Filho, nosso Senhor”</strong> –
+          <strong>“E em Jesus Cristo<i class="fas fa-cross"></i>, seu único Filho, nosso Senhor”</strong> –
           Jesus é o Filho unigênito do Pai, consubstancial a Ele, Senhor de tudo, Deus verdadeiro de Deus verdadeiro.
         </li>
         <li>
@@ -93,13 +93,13 @@ image: /images/formacao/credo.jpeg
         </li>
         <li>
           <strong>“Na Santa Igreja Católica”</strong> –
-          Cremos na Igreja fundada por Cristo, que é Una, Santa, Católica e Apostólica —
+          Cremos na Igreja fundada por Cristo<i class="fas fa-cross"></i>, que é Una, Santa, Católica e Apostólica —
           depositária da verdade e dos sacramentos.
         </li>
         <li>
           <strong>“Na comunhão dos santos”</strong> –
           Expressa a união entre os fiéis vivos, os santos no Céu e as almas do purgatório.
-          Todos estão unidos no Corpo Místico de Cristo.
+          Todos estão unidos no Corpo Místico de Cristo<i class="fas fa-cross"></i>.
         </li>
         <li>
           <strong>“Na remissão dos pecados”</strong> –

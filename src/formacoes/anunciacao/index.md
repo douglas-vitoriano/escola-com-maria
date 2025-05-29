@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Ave Maria
-image: /images/formacao/anunciacao.jpeg
+image: /images/formacao/ave_maria.jpeg
 ---
 <a href="/formacao" class="button is-light" style="margin-bottom: 1rem;">← Voltar</a>
 
@@ -73,7 +73,7 @@ image: /images/formacao/anunciacao.jpeg
       <li>
         <strong>Rogai por nós pecadores</strong> – Para que se compadeça de nós, expomos humildemente nossa miséria. 
         É como se lhe disséssemos: "Ó Maria, prodígio de santidade, dignai-vos dirigir vosso olhar benigno para nós, 
-        pobres pecadores, vossos indignos filhos. Penalizada por tamanha miséria, intercedei por nós junto a Cristo Jesus."<br><br>
+        pobres pecadores, vossos indignos filhos. Penalizada por tamanha miséria, intercedei por nós junto a Cristo<i class="fas fa-cross"></i> Jesus."<br><br>
       </li>
       <li>
         <strong>[Rogai] agora</strong> – O auxílio de Maria nos é necessário a todo instante, porque a cada momento temos deveres a cumprir, 

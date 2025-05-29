@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Purgatório
-image: /images/formacao/purgatorio.jpeg
+image: /images/formacao/purgatory.png
 ---
 <a href="/formacao" class="button is-light" style="margin-bottom: 1rem;">← Voltar</a>
 

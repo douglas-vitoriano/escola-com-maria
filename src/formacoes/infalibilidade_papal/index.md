@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Infalibilidade Papal
-image: /images/formacao/infalibilidade_papal.jpeg
+image: /images/formacao/sao_padro.png
 ---
 <a href="/formacao" class="button is-light" style="margin-bottom: 1rem;">← Voltar</a>
 
@@ -56,7 +56,7 @@ image: /images/formacao/infalibilidade_papal.jpeg
     <h2 class="sec_title">Por que é necessária?</h2>
     <p class="content">
       É necessária para garantir que a Igreja, assistida pelo Espírito Santo, jamais ensine erro nas questões de fé e moral, 
-      protegendo assim a verdade revelada por Cristo e garantindo a fidelidade dos fiéis.<br><br><br><br>
+      protegendo assim a verdade revelada por Cristo<i class="fas fa-cross"></i> e garantindo a fidelidade dos fiéis.<br><br><br><br>
     </p>
   </div>
 </div>

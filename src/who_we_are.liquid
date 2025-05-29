@@ -1,0 +1,333 @@
+---
+layout: default
+title: Carisma
+---
+<section class="section main-content">
+  <h1 class="custom-hero">Filhos da Paróquia Santa Cruz</h1>
+
+  <p class="custom-text">
+    A Paróquia Santa Cruz, localizada em Barueri (SP), é uma comunidade católica que busca viver com profundidade o
+    mistério da Cruz de Cristo<i class="fas fa-cross"></i>, centro da nossa fé. Nossa missão é evangelizar com zelo e
+    fidelidade à Igreja, formando discípulos que vivam com radicalidade o Evangelho e a devoção à Santíssima Eucaristia,
+    sob a proteção da Virgem Maria e dos nossos santos patronos.
+  </p>
+
+  <br>
+
+  <h2 class="custom-hero">Clero</h2>
+  <div class="clero-container">
+    <div class="clero-top-center">
+      <div class="clero-item">
+        <a href="https://www.instagram.com/pontifex/" target="_blank" aria-label="Instagram Papa Leão XIV">
+          <figure class="clero-image is-128x128">
+            <img src="images/clero/papa.jpg" alt="Papa Leão XIV">
+          </figure>
+        </a>
+        <p class="clero-text">Papa Leão XIV</p>
+        <p class="clero-subtext">Sumo pontífice</p>
+      </div>
+
+      <div class="clero-item">
+        <a href="https://www.instagram.com/d.freibosco/" target="_blank" aria-label="Instagram Dom Frei João Bosco">
+          <figure class="clero-image is-128x128">
+            <img src="images/clero/bispo.jpg" alt="Bispo Diocesano">
+          </figure>
+        </a>
+        <p class="clero-text">Dom Frei João Bosco, O.F.M.</p>
+        <p class="clero-subtext">Bispo Diocesano</p>
+      </div>
+    </div>
+
+    <div class="clero-bottom-space-between">
+      <div class="clero-item">
+        <a href="https://www.instagram.com/pe_ricardorodrigues/" target="_blank" aria-label="Instagram Pe. Ricardo">
+          <figure class="clero-image is-128x128">
+            <img src="images/clero/padre_ricardo.jpg" alt="Pe. Ricardo">
+          </figure>
+        </a>
+        <p class="clero-text">Padre Ricardo</p>
+        <p class="clero-subtext">Pároco</p>
+      </div>
+
+      <div class="clero-item">
+        <a href="https://www.santacruzbarueri.com.br/" target="_blank" aria-label="Site Paróquia">
+          <figure class="clero-image is-128x128">
+            <img src="images/clero/padre_vinicius.jpg" alt="Pe. Vinícius">
+          </figure>
+        </a>
+        <p class="clero-text">Padre Vinícius</p>
+        <p class="clero-subtext">Vigário</p>
+      </div>
+    </div>
+  </div>
+
+  <h1 class="title-endereco">Endereços:</h1>
+  <br>
+  <div class="container">
+    <p class="custom-endereco">
+      A Paróquia Santa Cruz conta com espaços dedicados para a vivência da fé e das atividades pastorais. Um dos
+      principais é o:
+    </p>
+
+    <p class="custom-endereco1" style="font-weight: small;">
+      Centro Pastoral Imaculada Conceição: Av. Lourenço Zácaro, 112 - Jardim São Silvestre
+    </p>
+  </div>
+</section>
+
+<section class="section dark-section">
+  <h1 class="custom-hero-dark">Nosso Carisma</h1>
+
+  <p class="custom-text-dark">
+    A Santa Missa é o centro da nossa vida espiritual: nela nos unimos ao Sacrifício de Cristo<i
+      class="fas fa-cross"
+    ></i>
+    e nos alimentamos da Sua presença real na Santíssima Eucaristia. A adoração ao Santíssimo Sacramento é fonte diária
+    de graça, onde aprendemos a amar, escutar e servir como Maria, em silêncio e adoração.
+  </p>
+
+  <br>
+  <p class="custom-text-dark">Inspirados nos santos, queremos:</p>
+
+  <ul class="custom-text-dark" style="margin-left: 15px;">
+    <li>
+      ► Viver a pobreza e amor radical de Cristo<i class="fas fa-cross" style="color: white; margin-left: 4px;"></i>
+      como São Francisco de Assis;
+    </li>
+    <li>► Ser almas de oração e reparação como São Pio de Pietrelcina;</li>
+    <li>► Consagrar-nos totalmente a Jesus pelas mãos de Maria, como ensinou São Luís Maria Grignion de Montfort;</li>
+  </ul>
+
+  <div class="columns is-multiline mt-6">
+    {% assign santos = site.data.santos %}
+    {% for santo in santos %}
+      <div class="column is-one-third has-text-centered">
+        <figure class="image is-inline-block is-clickable" onclick="mostrarSanto('{{ forloop.index0 }}')">
+          <img class="saint" src="{{ santo.imagem | relative_url }}" alt="{{ santo.nome }}">
+        </figure>
+        <p class="text-dark is-clickable" onclick="mostrarSanto('{{ forloop.index0 }}')">
+          {{ santo.nome }}
+        </p>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+<div class="modal" id="modal-santo">
+  <div class="modal-background" onclick="fecharModal()"></div>
+  <div class="modal-card" style="width: 70vw; max-height: 80vh; background: white;">
+    <header class="modal-card-head" style="background: white; border: none;">
+      <p class="modal-card-title" id="modal-titulo" style="color: #C4B35F;"></p>
+      <button class="delete" aria-label="close" onclick="fecharModal()"></button>
+    </header>
+    <section class="modal-card-body" id="modal-conteudo" style="overflow-y: auto; background: white;"></section>
+    <footer
+      class="modal-card-foot is-flex is-justify-content-center is-hidden-desktop"
+      style="background: white; border: none;"
+    >
+      <button class="button" style="background-color: #C4B35F; color: black;" onclick="fecharModal()">Fechar</button>
+    </footer>
+  </div>
+</div>
+
+<section class="section main-content">
+  <h1 class="custom-hero">Nossa Missão</h1>
+
+  <br>
+
+  <div class="container">
+    <p class="custom-text">
+      A Escola Com Maria é um movimento católico que deseja formar corações segundo o Coração de Jesus, vivendo e
+      aprendendo aos pés de Maria, Mãe e Mestra por excelência. Inspirados por São Pio de Pietrelcina, São Francisco de
+      Assis e São Luís Maria Grignion de Montfort, buscamos uma vida de santidade marcada pela humildade, pela
+      intimidade com Deus, pelo amor à cruz e pela entrega total à vontade divina.
+    </p>
+    <br>
+    <p class="custom-text">
+      Nosso ideal é ser um povo formado por Maria para ser todo de Jesus, vivendo a radicalidade do Evangelho com
+      alegria, simplicidade e obediência.
+    </p>
+    <p class="custom-text">
+      A Santa Missa é o centro da nossa vida espiritual: nela nos unimos ao Sacrifício de Cristo<i
+        class="fas fa-cross"
+      ></i>
+      e nos alimentamos da Sua presença real na Santíssima Eucaristia.
+    </p>
+    <br>
+    <br>
+    <p class="custom-text">
+      Nosso propósito é formar discípulos e verdadeiros católicos moldados no ventre espiritual de Maria, para que, como
+      ela, possam gerar Cristo<i class="fas fa-cross"></i> no mundo.
+    </p>
+  </div>
+</section>
+
+<style>
+  .form_title {
+    color: black;
+    font-size: 40px;
+  }
+
+  .image.is-clickable {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+  .image.is-clickable:hover {
+    transform: scale(1.05);
+  }
+  .modal-columns {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+  .modal-image {
+    flex: 0 0 300px;
+    text-align: center;
+  }
+  .modal-image img {
+    width: 100%;
+    border-radius: 12px;
+  }
+  .modal-dados {
+    flex: 1;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    text-align: justify;
+  }
+  @media (max-width: 1024px) {
+    .modal-columns {
+      flex-direction: column;
+      align-items: center;
+    }
+    .modal-dados {
+      text-align: center;
+      font-size: 1.1rem;
+    }
+    .modal-card {
+      width: 90vw !important;
+      max-height: 90vh !important;
+    }
+  }
+
+  .hero {
+    width: 400px !important;
+    height: 400px !important;
+    object-fit: fill;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+  }
+
+  .clero-container {
+    max-width: 600px;
+    margin: 0 auto 3rem auto;
+  }
+
+  .clero-top-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .clero-top-center .clero-item {
+    width: 128px;
+    text-align: center;
+  }
+
+  .clero-bottom-space-between {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 2rem;
+  }
+
+  .clero-bottom-space-between .clero-item {
+    width: 128px;
+    text-align: center;
+  }
+
+  .clero-item {
+    text-align: center;
+    flex: 1;
+    min-width: fit-content;
+  }
+
+  .clero-item img {
+    width: 128px;
+    height: 128px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #c4b35f;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  }
+
+  .clero-item img:hover {
+    transform: scale(1.07);
+    box-shadow: 0 0 15px rgba(196, 179, 95, 0.5);
+    border-color: #fff7cc;
+  }
+
+  .clero-text {
+    color: black;
+    text-align: center;
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+  }
+
+  .clero-subtext {
+    color: black;
+    text-align: center;
+    font-size: 0.85rem;
+    margin-top: 0.2rem;
+  }
+
+  /* Aqui a classe para fundo preto e texto branco */
+  .dark-section {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 2rem 1rem;
+  }
+
+  .dark-section a,
+  .dark-section a:visited {
+    color: #cccccc;
+  }
+
+  .dark-section ul {
+    color: #ffffff;
+  }
+
+  .dark-section li {
+    margin-bottom: 0.5rem;
+  }
+</style>
+
+<script>
+  const santos = {{ site.data.santos | jsonify }};
+
+  function mostrarSanto(index) {
+    const santo = santos[index];
+    document.getElementById("modal-titulo").textContent = santo.nome;
+    document.getElementById("modal-conteudo").innerHTML = `
+      <div class="modal-columns">
+        <div class="modal-image">
+          <img src="${santo.imagem}" alt="${santo.nome}">
+        </div>
+        <div class="modal-dados">
+          ${santo.dados ? santo.dados : ''}
+        </div>
+      </div>
+      <hr>
+      <p class="mt-4">${santo.resumo}</p>
+    `;
+    document.getElementById("modal-santo").classList.add("is-active");
+  }
+
+  function fecharModal() {
+    document.getElementById("modal-santo").classList.remove("is-active");
+  }
+</script>

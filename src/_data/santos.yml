@@ -1,6 +1,6 @@
 - id: sao-francisco
   nome: São Francisco de Assis
-  imagem: /images/sao_francisco.png
+  imagem: /images/sao_francisco.jpg
   dados: |
     <strong>Nascimento:</strong> 26 de setembro de 1182<br>
     <strong>Morte:</strong> 3 de outubro de 1226<br>
@@ -8,7 +8,7 @@
     <strong>Beatificação:</strong> Não houve processo formal moderno; foi considerado santo por aclamação popular.<br>
     <strong>Canonização:</strong> 16 de julho de 1228, pelo Papa Gregório IX<br><br>
   resumo: |
-    São Francisco nasceu em uma família rica e viveu uma juventude despreocupada. Após um processo de conversão profunda, abandonou tudo para seguir o Cristo pobre e crucificado.
+    São Francisco nasceu em uma família rica e viveu uma juventude despreocupada. Após um processo de conversão profunda, abandonou tudo para seguir o Cristo<i class="fas fa-cross"></i> pobre e crucificado.
 
     Um dos momentos marcantes de sua vida foi quando, em oração, ouviu Jesus dizer: “Francisco, reconstrói a minha Igreja”. Levou isso ao pé da letra e começou a restaurar igrejas abandonadas, até entender que o chamado era espiritual.
 
@@ -20,7 +20,7 @@
 
 - id: sao-pio
   nome: São Pio de Pietrelcina
-  imagem: /images/sao_pio.jpeg
+  imagem: /images/são_padre_pio.jpeg
   dados: |
     <strong>Nascimento:</strong> 25 de maio de 1887<br>
     <strong>Morte:</strong> 23 de setembro de 1968<br>
@@ -31,7 +31,7 @@
   resumo: |
     Padre Pio ingressou na Ordem dos Capuchinhos aos 15 anos e foi ordenado sacerdote em 1910.
 
-    A partir de 1918, passou a carregar os estigmas de Cristo, que permaneceram visíveis por 50 anos.
+    A partir de 1918, passou a carregar os estigmas de Cristo<i class="fas fa-cross"></i>, que permaneceram visíveis por 50 anos.
 
     É conhecido por seus dons místicos como bilocação (estar em dois lugares ao mesmo tempo), cura espiritual e física, leitura das almas e discernimento sobrenatural.
 
@@ -47,7 +47,7 @@
 
 - id: sao-luis
   nome: São Luís Maria Grignion de Montfort
-  imagem: /images/sao_luis.png
+  imagem: /images/sao_luis_montfort.jpg
   dados: |
     <strong>Nascimento:</strong> 31 de janeiro de 1673<br>
     <strong>Morte:</strong> 28 de abril de 1716<br>

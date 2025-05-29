@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Virtudes Teologais
-image: /images/formacao/virtudes.jpeg
+image: /images/formacao/virtudes_tologais.jpeg
 ---
 
 <a href="/formacao" class="button is-light" style="margin-bottom: 1rem;">← Voltar</a>
@@ -42,7 +42,7 @@ image: /images/formacao/virtudes.jpeg
     <ul class="content">
       <li>
         A esperança é a virtude teologal pela qual desejamos o Reino dos Céus e a vida eterna como nossa felicidade,
-        colocando nossa confiança nas promessas de Cristo e contando com o auxílio da graça do Espírito Santo.<br><br>
+        colocando nossa confiança nas promessas de Cristo<i class="fas fa-cross"></i> e contando com o auxílio da graça do Espírito Santo.<br><br>
         Ela nos protege do desânimo, sustenta-nos no desalento, alarga o coração na expectativa da bem-aventurança eterna.
       </li>
     </ul>

@@ -8,25 +8,36 @@
     </p>
     <div class="social-icons">
       <a
-        href="https://www.instagram.com/escola_com_maria?igsh=bG01OW55aXk2MGIw&utm_source=qr"
+        class="insta"
+        href="https://www.instagram.com/escola_com_maria"
         target="_blank"
         aria-label="Instagram"
       >
         <i class="fab fa-instagram"></i>
+      </a>
+      <a
+        href="https://www.santacruzbarueri.com.br/"
+        target="_blank"
+        aria-label="Paróquia Santa Cruz"
+        class="santacruz-link"
+      >
+        <img src="/images/logo_santacruz.png" alt="Paróquia Santa Cruz" class="santacruz-logo">
       </a>
     </div>
   </div>
 
   <div class="audio-player minimized" id="audio-player">
     <div class="player-header">
-      <p id="player-title" class="player-title">🎧 VOZ DE TROVÃO - COLO DE DEUS</p>
+      <p id="player-title" class="player-title" title="Clique para abrir/fechar o player">
+        <i class="fas fa-headphones"></i>🎧 VOZ DE TROVÃO - COLO DE DEUS
+      </p>
       <button
         id="toggle-minimize"
         class="minimize-button"
         aria-label="Minimizar player"
         title="Minimizar / Maximizar player"
       >
-        <i class="fas fa-chevron-down"></i>
+        <i class="🎧 fas fa-chevron-down"></i>
       </button>
     </div>
 
@@ -38,20 +49,16 @@
       <span id="prev-audio" class="control-button" role="button" tabindex="0" aria-label="Anterior">
         <i class="fas fa-step-backward"></i>
       </span>
-
       <span id="toggle-audio" class="control-button" role="button" tabindex="0" aria-label="Tocar / Pausar">
         <i class="fas fa-play-circle"></i>
       </span>
-
       <span id="next-audio" class="control-button" role="button" tabindex="0" aria-label="Próxima">
         <i class="fas fa-step-forward"></i>
       </span>
-
       <div id="progress-container" class="progress-bar">
         <div id="progress"></div>
         <div id="progress-text">00:00 / 00:00</div>
       </div>
-
       <button id="volume-icon" class="control-button" aria-label="Volume">
         <i class="fas fa-volume-up"></i>
       </button>
@@ -78,27 +85,48 @@
 
     .footer a.email-link:hover {
       color: rgb(255, 215, 0);
-      text-decoration: none;
     }
 
     .footer .social-icons {
       margin-top: 10px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      align-items: center;
     }
 
     .footer .social-icons a {
-      color: rgb(196, 179, 95);
-      margin: 0 10px;
       font-size: 1.5rem;
-      transition: color 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      margin: 0 10px;
     }
 
-    .footer .social-icons a:hover {
-      color: rgb(255, 215, 0);
+    .insta {
+      color: rgb(143, 133, 83);;
     }
+
+    {% comment %} .footer .social-icons a:hover {
+      rgb(255, 217, 0);
+    } {% endcomment %}
+
+    .santacruz-link img.santacruz-logo {
+      height: 2.1rem;
+      width: auto;
+      cursor: pointer;
+      transition: filter 0.3s;
+    }
+
+    {% comment %} .footer .social-icons a:hover,
+    .footer .social-icons .santacruz-link:hover img.santacruz-logo {
+      color: rgb(255, 215, 0);
+    } {% endcomment %}
 
     .audio-player {
       position: fixed;
-      bottom: 20px;
+      bottom: 0;
       left: 20px;
       background-color: rgba(0, 0, 0, 0.9);
       border: 1px solid rgb(196, 179, 95);
@@ -109,7 +137,7 @@
       display: flex;
       flex-direction: column;
       gap: 4px;
-      transition: height 0.3s ease, width 0.3s ease;
+      transition: height 0.3s, width 0.3s;
     }
 
     .player-header {
@@ -127,6 +155,7 @@
       overflow: hidden;
       text-overflow: ellipsis;
       max-width: 290px;
+      cursor: pointer;
     }
 
     .minimize-button {
@@ -140,15 +169,15 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      user-select: none;
       padding: 0;
+      transition: transform 0.3s;
     }
 
     .player-controls {
       display: flex;
       align-items: center;
       gap: 8px;
-      transition: opacity 0.3s ease;
+      transition: opacity 0.3s;
     }
 
     .audio-player.minimized {
@@ -173,10 +202,8 @@
 
     .audio-player.minimized .minimize-button i {
       transform: rotate(180deg);
-      transition: transform 0.3s ease;
     }
 
-    /* Controles */
     .control-button {
       background: transparent;
       border: none;
@@ -185,7 +212,6 @@
       cursor: pointer;
       width: 24px;
       text-align: center;
-      user-select: none;
     }
 
     .progress-bar {
@@ -198,7 +224,7 @@
       overflow: hidden;
     }
 
-    .progress-bar div#progress {
+    .progress-bar #progress {
       background: rgb(196, 179, 95);
       height: 100%;
       width: 0%;
@@ -206,7 +232,7 @@
       transition: width 0.1s linear;
     }
 
-    .progress-bar div#progress-text {
+    .progress-bar #progress-text {
       position: absolute;
       top: -14px;
       width: 100%;
@@ -215,7 +241,6 @@
       font-family: monospace;
       font-size: 0.65rem;
       pointer-events: none;
-      user-select: none;
     }
 
     .volume-slider {
@@ -225,19 +250,8 @@
       background: #ccc;
       border-radius: 2px;
       cursor: pointer;
-      outline: none;
     }
-
-    .volume-slider::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      width: 10px;
-      height: 10px;
-      background: rgb(196, 179, 95);
-      border-radius: 50%;
-      cursor: pointer;
-      border: none;
-    }
-
+    .volume-slider::-webkit-slider-thumb,
     .volume-slider::-moz-range-thumb {
       width: 10px;
       height: 10px;
@@ -246,20 +260,47 @@
       border: none;
       cursor: pointer;
     }
+
+    @media (max-width: 600px) {
+      .audio-player.minimized {
+        width: 48px !important;
+        height: 48px !important;
+        padding: 4px !important;
+        border-radius: 50%;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+      }
+      .audio-player.minimized .player-title,
+      .audio-player.minimized .player-controls,
+      .audio-player.minimized #progress-container,
+      .audio-player.minimized .volume-slider,
+      .audio-player.minimized #volume-icon {
+        display: none !important;
+      }
+      .audio-player.minimized .minimize-button {
+        display: flex !important;
+        position: absolute;
+        top: 2px;
+        right: 2px;
+      }
+      .audio-player.minimized .player-header {
+        font-size: 1.4rem;
+        color: rgb(196, 179, 95);
+      }
+    }
   </style>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const playlist = [
         { name: 'VOZ DE TROVÃO - COLO DE DEUS', file: '/music/voz_de_trovao.mp3' },
-        { name: 'AVE MARIA — COLO DE DEUS', file: '/music/ave_maria.mp3' },
-        { name: 'Belíssimo Esposo', file: '/music/belissimo_esposo.mp3' },
-        { name: 'Acaso Não Sabeis - Flavio Vitor Jr', file: '/music/acaso_nao_sabeis.mp3' },
-        { name: 'Santa Cruz', file: '/music/santa_cruz.mp3' },
+        { name: 'Outra música', file: '/music/outra_musica.mp3' },
       ];
 
-      let currentIndex = 0;
+      const STORAGE_KEY = 'audioPlayerState';
 
+      let currentIndex = 0;
       const audio = document.getElementById('player');
       const audioSource = document.getElementById('audio-source');
       const title = document.getElementById('player-title');
@@ -275,159 +316,188 @@
       const audioPlayer = document.getElementById('audio-player');
       const minimizeBtn = document.getElementById('toggle-minimize');
 
-      function formatTime(seconds) {
-        const m = Math.floor(seconds / 60)
+      function loadPlayerState() {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        return raw
+          ? JSON.parse(raw)
+          : {
+              currentIndex: 0,
+              minimized: true,
+              isPlaying: false,
+              tracks: {},
+            };
+      }
+
+      function savePlayerState(state) {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      }
+
+      function saveTrackState(currentTime, volume) {
+        const state = loadPlayerState();
+        const trackKey = playlist[currentIndex].file;
+        state.tracks[trackKey] = { currentTime, volume };
+        savePlayerState(state);
+      }
+
+      function loadTrackState() {
+        const state = loadPlayerState();
+        const trackKey = playlist[currentIndex].file;
+        return state.tracks[trackKey] || null;
+      }
+
+      function updateVolumeIcon(vol) {
+        if (vol === 0) volumeIcon.className = 'fas fa-volume-mute';
+        else if (vol < 0.5) volumeIcon.className = 'fas fa-volume-down';
+        else volumeIcon.className = 'fas fa-volume-up';
+      }
+
+      function loadTrack(i) {
+        currentIndex = i;
+        const t = playlist[i];
+        audioSource.src = t.file;
+        audio.load();
+        title.innerHTML = `🎧 ${t.name}`;
+        toggle.querySelector('i').className = 'fas fa-play-circle';
+
+        audio.addEventListener(
+          'loadedmetadata',
+          () => {
+            const trackState = loadTrackState();
+            if (trackState && trackState.currentTime < audio.duration) {
+              audio.currentTime = trackState.currentTime;
+            } else {
+              audio.currentTime = 0;
+            }
+            if (trackState && trackState.volume !== undefined) {
+              audio.volume = trackState.volume;
+              volumeControl.value = trackState.volume;
+              updateVolumeIcon(trackState.volume);
+            } else {
+              audio.volume = 1;
+              volumeControl.value = 1;
+              updateVolumeIcon(1);
+            }
+
+            progress.style.width = (audio.currentTime / audio.duration) * 100 + '%';
+            progressText.textContent = `${formatTime(audio.currentTime)} / ${formatTime(audio.duration)}`;
+
+            const state = loadPlayerState();
+
+            if (state.minimized) {
+              audioPlayer.classList.add('minimized');
+              minimizeBtn.querySelector('i').style.transform = 'rotate(180deg)';
+            } else {
+              audioPlayer.classList.remove('minimized');
+              minimizeBtn.querySelector('i').style.transform = 'rotate(0deg)';
+            }
+
+            if (state.isPlaying) {
+              audio.play();
+              toggle.querySelector('i').className = 'fas fa-pause-circle';
+            }
+          },
+          { once: true }
+        );
+
+        const state = loadPlayerState();
+        state.currentIndex = i;
+        savePlayerState(state);
+      }
+
+      function formatTime(sec) {
+        const m = Math.floor(sec / 60)
           .toString()
           .padStart(2, '0');
-        const s = Math.floor(seconds % 60)
+        const s = Math.floor(sec % 60)
           .toString()
           .padStart(2, '0');
         return `${m}:${s}`;
       }
 
-      function loadTrack(index) {
-        const track = playlist[index];
-        audioSource.src = track.file;
-        audio.load();
-        title.textContent = '🎧 ' + track.name;
-        toggle.querySelector('i').classList.remove('fa-pause-circle');
-        toggle.querySelector('i').classList.add('fa-play-circle');
-      }
-
-      function playTrack() {
-        audio.play();
-        toggle.querySelector('i').classList.remove('fa-play-circle');
-        toggle.querySelector('i').classList.add('fa-pause-circle');
-      }
-
-      function pauseTrack() {
-        audio.pause();
-        toggle.querySelector('i').classList.remove('fa-pause-circle');
-        toggle.querySelector('i').classList.add('fa-play-circle');
-      }
-
-      function nextTrack() {
-        currentIndex = (currentIndex + 1) % playlist.length;
-        localStorage.setItem('audioIndex', currentIndex);
-        localStorage.setItem('audioTime', 0);
-        loadTrack(currentIndex);
-        playTrack();
-      }
-
-      function prevTrack() {
-        currentIndex = (currentIndex - 1 + playlist.length) % playlist.length;
-        localStorage.setItem('audioIndex', currentIndex);
-        localStorage.setItem('audioTime', 0);
-        loadTrack(currentIndex);
-        playTrack();
-      }
-
-      const savedIndex = parseInt(localStorage.getItem('audioIndex'));
-      const savedTime = parseFloat(localStorage.getItem('audioTime'));
-      const savedIsPlaying = localStorage.getItem('audioIsPlaying') === 'true';
-      const savedVolume = parseFloat(localStorage.getItem('audioVolume'));
-
-      if (!isNaN(savedIndex) && savedIndex >= 0 && savedIndex < playlist.length) {
-        currentIndex = savedIndex;
-      }
-
-      loadTrack(currentIndex);
-
-      function restoreAudioState() {
-        if (audio.readyState >= 2) {
-          // HAVE_CURRENT_DATA
-          if (!isNaN(savedTime)) {
-            audio.currentTime = savedTime;
-          }
-
-          if (!isNaN(savedVolume) && savedVolume >= 0 && savedVolume <= 1) {
-            audio.volume = savedVolume;
-            volumeControl.value = savedVolume;
-            updateVolumeIcon(savedVolume);
-          }
-
-          if (savedIsPlaying) {
-            playTrack();
-          }
-        } else {
-          setTimeout(restoreAudioState, 100);
-        }
-      }
-
-      restoreAudioState();
-
-      toggle.addEventListener('click', () => {
+      function playPause() {
         if (audio.paused) {
-          playTrack();
+          audio.play();
+          toggle.querySelector('i').className = 'fas fa-pause-circle';
+          const state = loadPlayerState();
+          state.isPlaying = true;
+          savePlayerState(state);
         } else {
-          pauseTrack();
-        }
-      });
-
-      prevBtn.addEventListener('click', prevTrack);
-      nextBtn.addEventListener('click', nextTrack);
-
-      toggle.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          toggle.click();
-        }
-      });
-
-      audio.addEventListener('timeupdate', () => {
-        const percent = (audio.currentTime / audio.duration) * 100;
-        progress.style.width = percent + '%';
-        progressText.textContent = `${formatTime(audio.currentTime)} / ${formatTime(audio.duration)}`;
-
-        localStorage.setItem('audioIndex', currentIndex);
-        localStorage.setItem('audioTime', audio.currentTime);
-        localStorage.setItem('audioIsPlaying', !audio.paused);
-      });
-
-      progressContainer.addEventListener('click', (e) => {
-        const rect = progressContainer.getBoundingClientRect();
-        const clickX = e.clientX - rect.left;
-        const width = rect.width;
-        const clickPercent = clickX / width;
-        audio.currentTime = clickPercent * audio.duration;
-      });
-
-      audio.addEventListener('ended', nextTrack);
-
-      function updateVolumeIcon(volume) {
-        if (volume === 0) {
-          volumeIcon.className = 'fas fa-volume-mute';
-        } else if (volume > 0 && volume <= 0.5) {
-          volumeIcon.className = 'fas fa-volume-down';
-        } else {
-          volumeIcon.className = 'fas fa-volume-up';
+          audio.pause();
+          toggle.querySelector('i').className = 'fas fa-play-circle';
+          const state = loadPlayerState();
+          state.isPlaying = false;
+          savePlayerState(state);
         }
       }
 
-      volumeControl.addEventListener('input', () => {
-        audio.volume = volumeControl.value;
-        updateVolumeIcon(audio.volume);
-        localStorage.setItem('audioVolume', audio.volume);
-      });
+      prevBtn.onclick = () => {
+        currentIndex = (currentIndex - 1 + playlist.length) % playlist.length;
+        loadTrack(currentIndex);
+        audio.play();
+        const state = loadPlayerState();
+        state.isPlaying = true;
+        savePlayerState(state);
+      };
 
-      volumeIconBtn.addEventListener('click', () => {
+      nextBtn.onclick = () => {
+        currentIndex = (currentIndex + 1) % playlist.length;
+        loadTrack(currentIndex);
+        audio.play();
+        const state = loadPlayerState();
+        state.isPlaying = true;
+        savePlayerState(state);
+      };
+
+      toggle.onclick = playPause;
+
+      audio.ontimeupdate = () => {
+        const pct = (audio.currentTime / audio.duration) * 100;
+        progress.style.width = pct + '%';
+        progressText.textContent = `${formatTime(audio.currentTime)} / ${formatTime(audio.duration)}`;
+        saveTrackState(audio.currentTime, audio.volume);
+      };
+
+      progressContainer.onclick = (e) => {
+        const pct = e.offsetX / progressContainer.offsetWidth;
+        audio.currentTime = pct * audio.duration;
+        saveTrackState(audio.currentTime, audio.volume);
+      };
+
+      volumeControl.oninput = (e) => {
+        audio.volume = e.target.value;
+        updateVolumeIcon(audio.volume);
+        saveTrackState(audio.currentTime, audio.volume);
+      };
+
+      volumeIconBtn.onclick = () => {
         if (audio.volume > 0) {
           audio.volume = 0;
           volumeControl.value = 0;
-          updateVolumeIcon(0);
         } else {
           audio.volume = 1;
           volumeControl.value = 1;
-          updateVolumeIcon(1);
         }
-        localStorage.setItem('audioVolume', audio.volume);
-      });
+        updateVolumeIcon(audio.volume);
+        saveTrackState(audio.currentTime, audio.volume);
+      };
 
-      updateVolumeIcon(audio.volume);
+      function togglePlayer() {
+        const minimized = audioPlayer.classList.toggle('minimized');
+        const icon = minimizeBtn.querySelector('i');
+        icon.style.transform = minimized ? 'rotate(180deg)' : 'rotate(0deg)';
+        const state = loadPlayerState();
+        state.minimized = minimized;
+        savePlayerState(state);
+      }
 
-      minimizeBtn.addEventListener('click', () => {
-        audioPlayer.classList.toggle('minimized');
-      });
+      minimizeBtn.onclick = togglePlayer;
+      title.onclick = togglePlayer;
+
+      const initialState = loadPlayerState();
+      if (initialState.currentIndex !== undefined && initialState.currentIndex < playlist.length) {
+        currentIndex = initialState.currentIndex;
+      }
+      loadTrack(currentIndex);
     });
   </script>
 </footer>

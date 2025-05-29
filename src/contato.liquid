@@ -6,26 +6,13 @@ title: Contato
   <section class="section main-content">
     <div class="container">
       <h1 class="custom-hero">Pedido de Oração ou Dúvidas</h1>
-
       <div class="columns">
-        <!-- Coluna da Imagem -->
         <div class="column is-half">
           <figure class="image">
-            <img src="/images/contato.jpeg" alt="Momento de oração" style="border-radius: 12px;">
+            <img src="/images/contato_novo.jpeg" alt="Momento de oração" style="border-radius: 12px;">
           </figure>
         </div>
-
-        <!-- Coluna do Formulário -->
         <div class="column is-half">
-          <div id="success-message" class="notification is-success" style="display:none; position: relative;">
-            <button
-              class="delete"
-              id="close-success-message"
-              style="position: absolute; top: 10px; right: 10px;"
-            ></button>
-            Mensagem enviada com sucesso. Deus te abençoe! 🙌🌹👑
-          </div>
-
           <form id="contact-form" action="https://formspree.io/f/mqaqprqj" method="POST">
             <div class="field">
               <label class="label">Nome completo:</label>
@@ -42,7 +29,6 @@ title: Contato
                 >
               </div>
             </div>
-
             <div class="field">
               <label class="label">E-mail:</label>
               <div class="control">
@@ -57,7 +43,6 @@ title: Contato
                 >
               </div>
             </div>
-
             <div class="field">
               <label class="label">Cidade e Estado:</label>
               <div class="control">
@@ -73,7 +58,6 @@ title: Contato
                 >
               </div>
             </div>
-
             <div class="field">
               <label class="label">Paróquia e Comunidade:</label>
               <div class="control">
@@ -89,25 +73,27 @@ title: Contato
                 >
               </div>
             </div>
-
-            <div class="field">
-              <label class="label">Pedido de oração ou dúvida:</label>
-              <div class="control">
-                <textarea
-                  class="textarea"
-                  name="mensagem"
-                  placeholder="Escreva aqui seu pedido ou dúvida..."
-                  required
-                  rows="10"
-                ></textarea>
-              </div>
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column is-full">
+          <div class="field">
+            <label class="label">Pedido de oração ou dúvida:</label>
+            <div class="control">
+              <textarea
+                class="textarea"
+                name="mensagem"
+                placeholder="Escreva aqui seu pedido ou dúvida..."
+                required
+                rows="10"
+              ></textarea>
             </div>
-
-            <div class="field is-grouped">
-              <div class="control">
-                <button class="button is-warning is-light custom-button" type="submit">Enviar</button>
-              </div>
+          </div>
+          <div class="field is-grouped">
+            <div class="control">
+              <button class="button is-warning is-light custom-button" type="submit">Enviar</button>
             </div>
+          </div>
           </form>
         </div>
       </div>
@@ -149,5 +135,14 @@ title: Contato
       text-align: center;
       font-size: 24px;
     }
+  }
+
+  .hero {
+    width: 400px !important;
+    height: 400px !important;
+    object-fit: fill;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    margin-top: 5px;
   }
 </style>
