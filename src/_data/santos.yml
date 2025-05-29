@@ -20,7 +20,7 @@
 
 - id: sao-pio
   nome: São Pio de Pietrelcina
-  imagem: /images/são_padre_pio.jpeg
+  imagem: /images/sao_padre_pio.jpeg
   dados: |
     <strong>Nascimento:</strong> 25 de maio de 1887<br>
     <strong>Morte:</strong> 23 de setembro de 1968<br>
