@@ -26,45 +26,58 @@
     </div>
   </div>
 
-  <div class="audio-player minimized" id="audio-player">
-    <div class="player-header">
-      <p id="player-title" class="player-title" title="Clique para abrir/fechar o player">
-        <i class="fas fa-headphones"></i>🎧 VOZ DE TROVÃO - COLO DE DEUS
-      </p>
-      <button
-        id="toggle-minimize"
-        class="minimize-button"
-        aria-label="Minimizar player"
-        title="Minimizar / Maximizar player"
-      >
-        <i class="🎧 fas fa-chevron-down"></i>
-      </button>
-    </div>
-
-    <audio id="player" style="display:none;">
-      <source id="audio-source" src="/music/voz_de_trovao.mp3" type="audio/mpeg">
-    </audio>
-
-    <div class="player-controls">
-      <span id="prev-audio" class="control-button" role="button" tabindex="0" aria-label="Anterior">
-        <i class="fas fa-step-backward"></i>
-      </span>
-      <span id="toggle-audio" class="control-button" role="button" tabindex="0" aria-label="Tocar / Pausar">
-        <i class="fas fa-play-circle"></i>
-      </span>
-      <span id="next-audio" class="control-button" role="button" tabindex="0" aria-label="Próxima">
-        <i class="fas fa-step-forward"></i>
-      </span>
-      <div id="progress-container" class="progress-bar">
-        <div id="progress"></div>
-        <div id="progress-text">00:00 / 00:00</div>
-      </div>
-      <button id="volume-icon" class="control-button" aria-label="Volume">
-        <i class="fas fa-volume-up"></i>
-      </button>
-      <input id="volume-control" class="volume-slider" type="range" min="0" max="1" step="0.01" value="1">
-    </div>
+  <div class="download-pdf-container" style="margin-top: 1rem;">
+    <a
+      href="{{ '/static/preparacao-a-consagracao.pdf' | relative_url }}"
+      download
+      class="button download-pdf-button"
+      aria-label="Download do PDF Preparação à Consagração"
+    >
+      📄 Preparação à Consagração (PDF)
+    </a>
   </div>
+
+  {% comment %}
+    <div class="audio-player minimized" id="audio-player">
+      <div class="player-header">
+        <p id="player-title" class="player-title" title="Clique para abrir/fechar o player">
+          <i class="fas fa-headphones"></i>🎧 VOZ DE TROVÃO - COLO DE DEUS
+        </p>
+        <button
+          id="toggle-minimize"
+          class="minimize-button"
+          aria-label="Minimizar player"
+          title="Minimizar / Maximizar player"
+        >
+          <i class="🎧 fas fa-chevron-down"></i>
+        </button>
+      </div>
+
+      <audio id="player" style="display:none;">
+        <source id="audio-source" src="/music/voz_de_trovao.mp3" type="audio/mpeg">
+      </audio>
+
+      <div class="player-controls">
+        <span id="prev-audio" class="control-button" role="button" tabindex="0" aria-label="Anterior">
+          <i class="fas fa-step-backward"></i>
+        </span>
+        <span id="toggle-audio" class="control-button" role="button" tabindex="0" aria-label="Tocar / Pausar">
+          <i class="fas fa-play-circle"></i>
+        </span>
+        <span id="next-audio" class="control-button" role="button" tabindex="0" aria-label="Próxima">
+          <i class="fas fa-step-forward"></i>
+        </span>
+        <div id="progress-container" class="progress-bar">
+          <div id="progress"></div>
+          <div id="progress-text">00:00 / 00:00</div>
+        </div>
+        <button id="volume-icon" class="control-button" aria-label="Volume">
+          <i class="fas fa-volume-up"></i>
+        </button>
+        <input id="volume-control" class="volume-slider" type="range" min="0" max="1" step="0.01" value="1">
+      </div>
+    </div>
+  {% endcomment %}
 
   <style>
     .footer {
@@ -117,6 +130,27 @@
       width: auto;
       cursor: pointer;
       transition: filter 0.3s;
+    }
+
+    .download-pdf-button {
+      background-color: rgb(196, 179, 95);
+      color: black;
+      font-weight: 600;
+      padding: 0.5rem 1.2rem;
+      border-radius: 6px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      border: none;
+      cursor: pointer;
+    }
+
+    .download-pdf-button:hover {
+      background-color: rgb(255, 215, 0);
+      color: black;
+      text-decoration: none;
     }
 
     {% comment %} .footer .social-icons a:hover,
