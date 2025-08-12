@@ -4,29 +4,43 @@ title: Home
 ---
 <section class="section main-content">
   <h1 class="custom-hero">Bem-vindo à Escola Com Maria</h1>
-    <p class="custom-intro">
-      Formação espiritual baseada no método de São Luís Maria Grignion de Montfort, aprofundamento na liturgia diária e comunidade para sua consagração à Virgem Maria.
-    </p>
-  </div>
+  <p class="custom-intro">
+    Formação espiritual baseada no método de São Luís Maria Grignion de Montfort, com aprofundamento na liturgia diária
+    e vida em comunidade para a consagração à Virgem Maria.
+  </p>
 
   <div class="container content calendar-section">
-    <h2 class="custom-subtitle">Calendário de Encontros 2025</h2>
+    <h2 class="custom-subtitle desktop-title">Calendário de Encontros 2025</h2>
+    <h2 class="custom-subtitle mobile-title">Encontros 2025</h2>
+
+    <p class="start-time-note">**Todos os encontros começam às 19:00.</p>
+
     <ul class="custom-list">
-      <li><strong>05/07:</strong> Início dos encontros</li>
-      <li><strong>19/07:</strong> Santa Missa, como nunca viu — <a href="/static/santa-missa-passo-a-passo.pdf" download>Baixar PDF</a></li>
-      <li><strong>02/08:</strong> Maria, o terror dos demônios — <a href="/static/maria-terros-dos-demonios.pdf" download>Baixar PDF</a></li>
-      <li><strong>22/08 (alterado):</strong> O que é a consagração a Jesus por Maria<br>Tema: O espírito do mundo x espírito de Cristo (on-line)</li>
-      <li><strong>05/09:</strong> Espiritualidade de Montfort – Parte 1<br>Conhecer a vida e missão de São Luís Maria Grignion de Montfort</li>
-      <li><strong>19/09:</strong> Espiritualidade de Montfort – Parte 2<br>Ensinamentos para a vida consagrada</li>
-      <li><strong>03/10:</strong> Início do retiro para consagração (oração e mortificação)</li>
-      <li><strong>17/10:</strong> Maria e o Espírito Santo</li>
-      <li><strong>31/10:</strong> Como viver a consagração no dia a dia</li>
-      <li><strong>14/11:</strong> O combate espiritual após a consagração</li>
-      <li><strong>28/11:</strong> Revisão geral e testemunhos</li>
-      <li><strong>08/12:</strong> Consagração a Nossa Senhora na Solenidade da Imaculada Conceição</li>
+      <li><strong>05/07</strong> Início dos encontros</li>
+      <li>
+        <div class="list-item-content">
+          <span><strong>19/07</strong> Santa Missa, como nunca viu</span>
+          <a class="pdf-button" href="/static/santa-missa-passo-a-passo.pdf" download>📄 Baixar PDF</a>
+        </div>
+      </li>
+      <li>
+        <div class="list-item-content">
+          <span><strong>02/08</strong> Maria, o terror dos demônios</span>
+          <a class="pdf-button" href="/static/maria-terros-dos-demonios.pdf" download>📄 Baixar PDF</a>
+        </div>
+      </li>
+      <li><strong>16/08 (alterado para 22/08 e on-line)</strong> O que é a consagração a Jesus por Maria</li>
+      <li><strong>30/08</strong> O espírito do mundo x espírito de Cristo</li>
+      <li><strong>13/09</strong> Conhecer a vida, missão e ensinamentos de São Luís Maria Grignion de Montfort</li>
+      <li><strong>27/09</strong> Oração e mortificação (Início do retiro para consagração)</li>
+      <li><strong>11/10</strong> Maria e o Espírito Santo</li>
+      <li><strong>25/10</strong> Confissão: exame de consciência e combate ao pecado</li>
+      <li><strong>08/11</strong> O combate espiritual após a consagração</li>
+      <li><strong>22/11</strong> Como viver a consagração no dia a dia</li>
+      <li><strong>06/12</strong> Confraternização e Testemunhos</li>
+      <li><strong>08/12</strong> Consagração a Nossa Senhora na Solenidade da Imaculada Conceição</li>
     </ul>
   </div>
-
 
   <div class="container content cta-section">
     <a
@@ -40,6 +54,7 @@ title: Home
 </section>
 
 <style>
+  /* Títulos principal */
   .custom-hero {
     font-size: 60px;
     font-family: 'Georgia', serif;
@@ -48,26 +63,27 @@ title: Home
     margin-bottom: 20px;
   }
 
-  @media screen and (max-width: 768px) {
-    .custom-hero {
-      font-size: 50px;
-    }
-  }
-
+  /* Container centralizado e com largura limitada */
   .container.content {
     max-width: 720px;
     margin: 2rem auto;
     padding: 0 1rem;
   }
 
+  /* Subtítulo */
   .custom-subtitle {
     font-size: 45px;
     font-family: 'Georgia', serif;
-    color: black !important; 
+    color: black !important;
     margin-bottom: 20px;
   }
 
-  /* Parágrafos */
+  /* Títulos desktop/mobile */
+  .mobile-title {
+    display: none;
+  }
+
+  /* Texto introdutório */
   .custom-intro {
     font-size: 1.25rem;
     line-height: 1.6;
@@ -77,19 +93,29 @@ title: Home
     font-style: italic;
     color: #555a46;
   }
-  .custom-text {
-    font-size: 1.1rem;
-    line-height: 1.7;
-    color: #444938;
+
+  /* Nota do horário fixo */
+  .start-time-note {
+    font-style: italic;
+    color: #555a46;
+    margin-bottom: 1rem;
+    font-size: 1rem;
   }
 
-  /* Lista de calendário */
-  .custom-list {
-    list-style: none;
+  /* Lista personalizada, sem marcadores */
+  .custom-list,
+  .custom-list li {
+    list-style: none !important;
     padding-left: 0;
-    color: #3a3a3a;
+    margin-left: -40px;
+  }
+
+  .custom-list {
+    color: black !important;
     font-size: 1.15rem;
   }
+
+  /* Itens da lista com estilo */
   .custom-list li {
     background: #e9e6d8;
     margin-bottom: 10px;
@@ -98,16 +124,46 @@ title: Home
     border-radius: 4px;
     box-shadow: 1px 1px 4px rgb(196 179 95 / 0.3);
   }
+
   .custom-list li strong {
     color: #5a5a22;
   }
 
-  /* Botão principal */
+  /* Layout para itens com botão PDF */
+  .list-item-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  /* Botão PDF */
+  .pdf-button {
+    background-color: #c4b35f;
+    color: #2e2e2e;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.95rem;
+    box-shadow: 0 2px 5px rgb(196 179 95 / 0.4);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .pdf-button:hover {
+    background-color: rgb(255, 215, 0);
+    box-shadow: 0 4px 8px rgb(169 151 60 / 0.5);
+  }
+
+  /* Seção do botão principal */
   .cta-section {
     text-align: center;
     margin-top: 3rem;
     margin-bottom: 4rem;
   }
+
+  /* Botão principal */
   .cta-button {
     background-color: #c4b35f;
     color: #2e2e2e;
@@ -122,30 +178,49 @@ title: Home
     text-decoration: none;
     display: inline-block;
   }
+
   .cta-button:hover,
   .cta-button:focus {
-    background-color: #a9973c;
+    background-color: rgb(255, 215, 0);
     box-shadow: 0 8px 15px rgb(169 151 60 / 0.8);
     color: #1f1f1f;
     outline: none;
   }
-  
-  @media (max-width: 768px) {
-    .custom-title {
-      font-size: 2.2rem;
-      padding: 0 10px;
+
+  /* RESPONSIVIDADE */
+  @media screen and (max-width: 768px) {
+    .custom-hero {
+      font-size: 50px;
     }
+
+    .desktop-title {
+      display: none;
+    }
+
+    .mobile-title {
+      display: block;
+      font-size: 1.6rem;
+    }
+
     .custom-subtitle {
       font-size: 1.6rem;
     }
+
     .custom-intro {
       font-size: 1rem;
       padding: 0 10px;
     }
+
     .custom-list li {
       padding: 10px 15px;
       font-size: 1rem;
     }
+
+    .pdf-button {
+      width: 100%;
+      text-align: center;
+    }
+
     .cta-button {
       font-size: 1.2rem;
       padding: 1rem 2rem;
